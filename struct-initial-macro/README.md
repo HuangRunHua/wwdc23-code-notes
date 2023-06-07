@@ -46,4 +46,23 @@ Now let's see how to implement this Swift macro through code.
 
 ## Create a New Project
 
-In order to create Swift Macros instead of creating a project you have to create a new package. You can find the new macro template appear in the package-choose window.
+In order to create Swift Macros instead of creating a project you have to create a new package. You can find the new macro template appear in the package-choose window. Name the template whatever you like, here I named it `struct_initial_macro`
+
+![](https://github.com/HuangRunHua/wwdc23-code-notes/raw/main/struct-initial-macro/article-imgs/pic1.png)
+
+## Name Your Macro 
+
+Since you may use the macro for every situation It is wise to choose a nice name for your macro. Here I named my macro `StructInit`. This name is very intuitive, and it can be seen at a glance that this macro is used to initialize a structure.
+
+After naming your macro, you may need to declare your macro right in the package. Open file `struct_initial_macro.swift` (It is my file's name, the file you need to open is `your_package_name.swift`) and update the code there:
+
+```swift
+@attached(member, names: named(init))
+public macro StructInit() = #externalMacro(module: "struct_initial_macroMacros", type: "StructInitMacro")
+```
+
+Noted that the initializer is the member of any structure if you want to initialize it explicitly, so we need to declare an attached member macro by using the `@attached(member)` attribute. Because I plan to name my macro `StructInit`, I declare a `StructInit()` macro here. Note that parentheses need to be added when declaring the macro. The second sentence means the implementation of the expansion that our macro actually performs will be defined inside `StructInitMacro` type in the `struct_initial_macroMacros` module.
+
+## Implementation of Macro
+
+After naming and declaring your macro, we now need to declare the method.
