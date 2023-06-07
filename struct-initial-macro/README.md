@@ -65,4 +65,121 @@ Noted that the initializer is the member of any structure if you want to initial
 
 ## Implementation of Macro
 
-After naming and declaring your macro, we now need to declare the method.
+After naming and declaring your macro, we now need to declare the method. Open `struct_initial_macroMacros.swift` file, add a public structure called `StructInitMacro` which is ostensibly the same type name which defined in `StructInit()` before. Since we declared an attached member macro so here we need to make structure `StructInitMacro` conform to the `MemberMacro` protocol:
+
+```swift
+public struct StructInitMacro: MemberMacro {
+    public static func expansion(
+        of node: AttributeSyntax,
+        providingMembersOf declaration: some DeclGroupSyntax,
+        in context: some MacroExpansionContext
+    ) throws -> [SwiftSyntax.DeclSyntax] {
+    /// Code will be added here later.
+}
+```
+
+Noted that in `struct_initial_macroPlugin` you need to add your macro to the `providingMacros` so that you can make `StructInitMacro` visible to the compiler:
+
+```swift
+@main
+struct struct_initial_macroPlugin: CompilerPlugin {
+    let providingMacros: [Macro.Type] = [
+        StructInitMacro.self,
+    ]
+}
+```
+
+Back to `expension(:)` function defined before. The `expansion` function takes the node attribute with which we apply the macro to a declaration, as well as the declaration that the macro is being applied to. In our case, this will be the any `Structure` declaration. The macro then returns the list of all the new members it wants to add to that declaration.
+
+We want this macro to be used only on the keyword `struct`, so we start by casting `declaration` to an `struct` declaration, inside your `expansion(:)`method, add the following code to check the `struct` declaration:
+
+```swift
+guard let structDecl = declaration.as(StructDeclSyntax.self) else {
+		throw StructInitError.onlyApplicableToStruct
+}
+```
+
+The `StructInitError` is used to emit an error when the `@StructInit` is not attached to a type that is not a struct and the definition of `StructInitError` shows below:
+
+```swift
+enum StructInitError: CustomStringConvertible, Error {
+    case onlyApplicableToStruct
+    
+    var description: String {
+        switch self {
+        case .onlyApplicableToStruct: return "@StructInit can only be applied to a structure"
+        }
+    }
+}
+```
+
+Next, we need to get all the elements that any structure declares. To figure out how to do that, we can inspect the syntactic structure of that structure in the SwiftSyntax tree. Similar to the WWDC video, we force the `expansion` method return empty list first and then set a breakpoint in that line code:
+
+```swift
+public struct StructInitMacro: MemberMacro {
+    public static func expansion(
+        of node: AttributeSyntax,
+        providingMembersOf declaration: some DeclGroupSyntax,
+        in context: some MacroExpansionContext
+    ) throws -> [SwiftSyntax.DeclSyntax] {
+    /// Code will be added here later.
+    guard let structDecl = declaration.as(StructDeclSyntax.self) else {
+				throw StructInitError.onlyApplicableToStruct
+		}
+    return [] /// <--- Set a breakpoint here.
+}
+```
+
+### Set Test Data
+
+Before we debug we need to set the test data in `struct_initial_macroTests.swift` file. For better coding and debugging, we can first set the test data to the full lines of code that we want the macro to expand:
+
+```swift
+final class struct_initial_macroTests: XCTestCase {
+    func testMacro() {
+        assertMacroExpansion(
+            """
+            @StructInit
+            struct Book {
+                var id: Int
+                var title: String
+                var subtitle: String
+                var description: String
+                var author: String
+              	init(id: Int, title: String, subtitle: String, description: String, author: String) {
+                    self.id = id
+                    self.title = title
+                    self.subtitle = subtitle
+                    self.description = description
+                    self.author = author
+                }
+            }
+            """,
+            expandedSource:
+            """
+            
+            struct Book {
+                var id: Int
+                var title: String
+                var subtitle: String
+                var description: String
+                var author: String
+                init(id: Int, title: String, subtitle: String, description: String, author: String) {
+                    self.id = id
+                    self.title = title
+                    self.subtitle = subtitle
+                    self.description = description
+                    self.author = author
+                }
+            }
+            """,
+            macros: testMacros
+        )
+    }
+}
+```
+
+Now hit the run button
+
+
+
