@@ -8,7 +8,7 @@ enum Slope {
     case blackBeauty
 }
 
-@SlopeSubset
+@EnumSubset<Slope>
 enum EasySlope {
     case beginnersParadise
     case practiceRun
@@ -22,3 +22,6 @@ enum EasySlope {
         }
     }
 }
+
+//@EnumSubset
+//struct Skier {}

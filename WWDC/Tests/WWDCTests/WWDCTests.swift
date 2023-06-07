@@ -3,45 +3,15 @@ import SwiftSyntaxMacrosTestSupport
 import XCTest
 import WWDCMacros
 
-//let testMacros: [String: Macro.Type] = [
-//    "stringify": StringifyMacro.self,
-//]
-//
-//final class WWDCTests: XCTestCase {
-//    func testMacro() {
-//        assertMacroExpansion(
-//            """
-//            #stringify(a + b)
-//            """,
-//            expandedSource: """
-//            (a + b, "a + b")
-//            """,
-//            macros: testMacros
-//        )
-//    }
-//
-//    func testMacroWithStringLiteral() {
-//        assertMacroExpansion(
-//            #"""
-//            #stringify("Hello, \(name)")
-//            """#,
-//            expandedSource: #"""
-//            ("Hello, \(name)", #""Hello, \(name)""#)
-//            """#,
-//            macros: testMacros
-//        )
-//    }
-//}
-
 let testMacros: [String: Macro.Type] = [
-    "SlopeSubset": SlopeSubsetMacro.self
+    "EnumSubset": SlopeSubsetMacro.self
 ]
 
 final class WWDCTests: XCTestCase {
     func testSlopesubset() {
         assertMacroExpansion(
             """
-            @SlopeSubset
+            @EnumSubset<Slope>
             enum Easyslope {
                 case beginnersParadise
                 case practiceRun
@@ -65,6 +35,26 @@ final class WWDCTests: XCTestCase {
             }
             """, macros: testMacros)
     }
+    
+    func testSlopesubsetOnStruct() {
+        assertMacroExpansion(
+            """
+            @EnumSubset<Slope>
+            struct skier {
+            }
+            """, expandedSource:
+            """
+            
+            struct skier {
+            }
+            """,
+            diagnostics: [
+                DiagnosticSpec(message: "@EnumSubset can only be applied to an enum", line: 1, column: 1)
+            ],
+            macros: testMacros)
+    }
+    
+    
 }
 
 
