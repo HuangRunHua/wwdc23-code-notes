@@ -1,14 +1,8 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
-/// A macro that produces both a value and a string containing the
-/// source code that generated the value. For example,
-///
-///     #stringify(x + y)
-///
-/// produces a tuple `(x + y, "x + y")`.
-//@freestanding(expression)
-//public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "WWDCMacros", type: "StringifyMacro")
-
 @attached(member, names: named(init))
-public macro SlopeSubset() = #externalMacro(module: "WWDCMacros", type: "SlopeSubsetMacros")
+/// 定义了`SlopeSubset()`后在使用的时候采用语法`@SlopeSubset`添加关键词
+/// `module`用于指明`macro`内部的实现将在哪里定义
+/// `type`内的参数值必须和`WWDCMacro`中定义的公开结构体的名字相同
+public macro SlopeSubset() = #externalMacro(module: "WWDCMacros", type: "SlopeSubsetMacro")

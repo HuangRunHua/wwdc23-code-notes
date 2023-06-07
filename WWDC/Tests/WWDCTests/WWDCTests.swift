@@ -52,7 +52,19 @@ final class WWDCTests: XCTestCase {
             enum Easyslope {
                 case beginnersParadise
                 case practiceRun
+                init?(_ slope: Slope) {
+                    switch slope {
+                    case .beginnersParadise:
+                        self = .beginnersParadise
+                    case .practiceRun:
+                        self = .practiceRun
+                    default:
+                        return nil
+                    }
+                }
             }
             """, macros: testMacros)
     }
 }
+
+

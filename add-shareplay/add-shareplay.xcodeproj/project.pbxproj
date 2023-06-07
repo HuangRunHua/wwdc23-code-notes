@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		A970E3FB2A306CD400594C63 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A970E3FA2A306CD400594C63 /* Assets.xcassets */; };
 		A970E3FE2A306CD400594C63 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A970E3FD2A306CD400594C63 /* Preview Assets.xcassets */; };
 		A970E4052A306F2300594C63 /* OrderTogether.swift in Sources */ = {isa = PBXBuildFile; fileRef = A970E4042A306F2300594C63 /* OrderTogether.swift */; };
+		A99CA06C2A308496009CE079 /* WWDC in Frameworks */ = {isa = PBXBuildFile; productRef = A99CA06B2A308496009CE079 /* WWDC */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A99CA06C2A308496009CE079 /* WWDC in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = "add-shareplay";
+			packageProductDependencies = (
+				A99CA06B2A308496009CE079 /* WWDC */,
+			);
 			productName = "add-shareplay";
 			productReference = A970E3F32A306CD300594C63 /* add-shareplay.app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,12 @@
 				Base,
 			);
 			mainGroup = A970E3EA2A306CD300594C63;
+			packageReferences = (
+				A99CA0672A308420009CE079 /* XCLocalSwiftPackageReference "../WWDC" */,
+				A99CA06A2A308496009CE079 /* XCLocalSwiftPackageReference "../WWDC" */,
+				A99CA06D2A3084D7009CE079 /* XCLocalSwiftPackageReference "../WWDC" */,
+				A99CA0702A30851D009CE079 /* XCLocalSwiftPackageReference "../WWDC" */,
+			);
 			productRefGroup = A970E3F42A306CD300594C63 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -348,6 +359,32 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A99CA0672A308420009CE079 /* XCLocalSwiftPackageReference "../WWDC" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../WWDC;
+		};
+		A99CA06A2A308496009CE079 /* XCLocalSwiftPackageReference "../WWDC" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../WWDC;
+		};
+		A99CA06D2A3084D7009CE079 /* XCLocalSwiftPackageReference "../WWDC" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../WWDC;
+		};
+		A99CA0702A30851D009CE079 /* XCLocalSwiftPackageReference "../WWDC" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../WWDC;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A99CA06B2A308496009CE079 /* WWDC */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = WWDC;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A970E3EB2A306CD300594C63 /* Project object */;
 }

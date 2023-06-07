@@ -38,7 +38,27 @@ public struct SlopeSubsetMacro: MemberMacro {
         providingMembersOf declaration: some DeclGroupSyntax,
         in context: some MacroExpansionContext
     ) throws -> [DeclSyntax] {
-        return []
+        /// 如果`@SlopeSubset`关键字不是在`enum`前面添加则无效
+        guard let enumDel = declaration.as(EnumDeclSyntax.self) else { return [] }
+        
+        let members = enumDel.memberBlock.members
+        let caseDecls = members.compactMap { $0.decl.as(EnumCaseDeclSyntax.self)}
+        let elements = caseDecls.flatMap { $0.elements }
+        let initializer = try InitializerDeclSyntax("init?(_ slope: Slope)") {
+            try SwitchExprSyntax("switch slope") {
+                for element in elements {
+                    SwitchCaseSyntax(
+                        """
+                        case .\(element.identifier):
+                            self = .\(element.identifier)
+                        """
+                    )
+                }
+                SwitchCaseSyntax("default: return nil")
+            }
+        }
+        
+        return [DeclSyntax(initializer)]
     }
 }
 

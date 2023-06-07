@@ -1,8 +1,24 @@
 import WWDC
 
-//let a = 17
-//let b = 25
-//
-//let (result, code) = #stringify(a + b)
-//
-//print("The value \(result) was produced by the code \"\(code)\"")
+enum Slope {
+    case beginnersParadise
+    case practiceRun
+    case livingRoom
+    case olympicRun
+    case blackBeauty
+}
+
+@SlopeSubset
+enum EasySlope {
+    case beginnersParadise
+    case practiceRun
+    
+    var slope: Slope {
+        switch self {
+        case .beginnersParadise:
+            return .beginnersParadise
+        case .practiceRun:
+            return .practiceRun
+        }
+    }
+}
