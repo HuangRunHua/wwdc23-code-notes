@@ -18,6 +18,13 @@ final class struct_initial_macroTests: XCTestCase {
                 var subtitle: String
                 var description: String
                 var author: String
+                init(id: Int, title: String, subtitle: String, description: String, author: String) {
+                    self.id = id
+                    self.title = title
+                    self.subtitle = subtitle
+                    self.description = description
+                    self.author = author
+               }
             }
             """,
             expandedSource:

@@ -179,7 +179,268 @@ final class struct_initial_macroTests: XCTestCase {
 }
 ```
 
-Now hit the run button
+### Debugging
+
+Now run the test cases to hit our breakpoint. After running we now have the debugger paused inside the macro’s implementation and `structDecl` is the Book structure. We can print it in the debugger by typing `po structDecl` inside the Xcode console:
+
+```bash
+po structDecl
+```
+
+The output contains a lot of nodes of the syntax tree represent the struct elements which shows below.
+
+```bash
+StructDeclSyntax
+├─attributes: AttributeListSyntax
+│ ╰─[0]: AttributeSyntax
+│   ├─atSignToken: atSign
+│   ╰─attributeName: SimpleTypeIdentifierSyntax
+│     ╰─name: identifier("StructInit")
+├─structKeyword: keyword(SwiftSyntax.Keyword.struct)
+├─identifier: identifier("Book")
+╰─memberBlock: MemberDeclBlockSyntax
+  ├─leftBrace: leftBrace
+  ├─members: MemberDeclListSyntax
+  │ ├─[0]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("id")
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("Int")
+  │ ├─[1]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("title")
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("String")
+  │ ├─[2]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("subtitle")
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("String")
+  │ ├─[3]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("description")
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("String")
+  │ ├─[4]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("author")
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("String")
+  │ ╰─[5]: MemberDeclListItemSyntax
+  │   ╰─decl: InitializerDeclSyntax
+  │     ├─initKeyword: keyword(SwiftSyntax.Keyword.init)
+  │     ├─signature: FunctionSignatureSyntax
+  │     │ ╰─input: ParameterClauseSyntax
+  │     │   ├─leftParen: leftParen
+  │     │   ├─parameterList: FunctionParameterListSyntax
+  │     │   │ ├─[0]: FunctionParameterSyntax
+  │     │   │ │ ├─firstName: identifier("id")
+  │     │   │ │ ├─colon: colon
+  │     │   │ │ ├─type: SimpleTypeIdentifierSyntax
+  │     │   │ │ │ ╰─name: identifier("Int")
+  │     │   │ │ ╰─trailingComma: comma
+  │     │   │ ├─[1]: FunctionParameterSyntax
+  │     │   │ │ ├─firstName: identifier("title")
+  │     │   │ │ ├─colon: colon
+  │     │   │ │ ├─type: SimpleTypeIdentifierSyntax
+  │     │   │ │ │ ╰─name: identifier("String")
+  │     │   │ │ ╰─trailingComma: comma
+  │     │   │ ├─[2]: FunctionParameterSyntax
+  │     │   │ │ ├─firstName: identifier("subtitle")
+  │     │   │ │ ├─colon: colon
+  │     │   │ │ ├─type: SimpleTypeIdentifierSyntax
+  │     │   │ │ │ ╰─name: identifier("String")
+  │     │   │ │ ╰─trailingComma: comma
+  │     │   │ ├─[3]: FunctionParameterSyntax
+  │     │   │ │ ├─firstName: identifier("description")
+  │     │   │ │ ├─colon: colon
+  │     │   │ │ ├─type: SimpleTypeIdentifierSyntax
+  │     │   │ │ │ ╰─name: identifier("String")
+  │     │   │ │ ╰─trailingComma: comma
+  │     │   │ ╰─[4]: FunctionParameterSyntax
+  │     │   │   ├─firstName: identifier("author")
+  │     │   │   ├─colon: colon
+  │     │   │   ╰─type: SimpleTypeIdentifierSyntax
+  │     │   │     ╰─name: identifier("String")
+  │     │   ╰─rightParen: rightParen
+  │     ╰─body: CodeBlockSyntax
+  │       ├─leftBrace: leftBrace
+  │       ├─statements: CodeBlockItemListSyntax
+  │       │ ├─[0]: CodeBlockItemSyntax
+  │       │ │ ╰─item: SequenceExprSyntax
+  │       │ │   ╰─elements: ExprListSyntax
+  │       │ │     ├─[0]: MemberAccessExprSyntax
+  │       │ │     │ ├─base: IdentifierExprSyntax
+  │       │ │     │ │ ╰─identifier: keyword(SwiftSyntax.Keyword.self)
+  │       │ │     │ ├─dot: period
+  │       │ │     │ ╰─name: identifier("id")
+  │       │ │     ├─[1]: AssignmentExprSyntax
+  │       │ │     │ ╰─assignToken: equal
+  │       │ │     ╰─[2]: IdentifierExprSyntax
+  │       │ │       ╰─identifier: identifier("id")
+  │       │ ├─[1]: CodeBlockItemSyntax
+  │       │ │ ╰─item: SequenceExprSyntax
+  │       │ │   ╰─elements: ExprListSyntax
+  │       │ │     ├─[0]: MemberAccessExprSyntax
+  │       │ │     │ ├─base: IdentifierExprSyntax
+  │       │ │     │ │ ╰─identifier: keyword(SwiftSyntax.Keyword.self)
+  │       │ │     │ ├─dot: period
+  │       │ │     │ ╰─name: identifier("title")
+  │       │ │     ├─[1]: AssignmentExprSyntax
+  │       │ │     │ ╰─assignToken: equal
+  │       │ │     ╰─[2]: IdentifierExprSyntax
+  │       │ │       ╰─identifier: identifier("title")
+  │       │ ├─[2]: CodeBlockItemSyntax
+  │       │ │ ╰─item: SequenceExprSyntax
+  │       │ │   ╰─elements: ExprListSyntax
+  │       │ │     ├─[0]: MemberAccessExprSyntax
+  │       │ │     │ ├─base: IdentifierExprSyntax
+  │       │ │     │ │ ╰─identifier: keyword(SwiftSyntax.Keyword.self)
+  │       │ │     │ ├─dot: period
+  │       │ │     │ ╰─name: identifier("subtitle")
+  │       │ │     ├─[1]: AssignmentExprSyntax
+  │       │ │     │ ╰─assignToken: equal
+  │       │ │     ╰─[2]: IdentifierExprSyntax
+  │       │ │       ╰─identifier: identifier("subtitle")
+  │       │ ├─[3]: CodeBlockItemSyntax
+  │       │ │ ╰─item: SequenceExprSyntax
+  │       │ │   ╰─elements: ExprListSyntax
+  │       │ │     ├─[0]: MemberAccessExprSyntax
+  │       │ │     │ ├─base: IdentifierExprSyntax
+  │       │ │     │ │ ╰─identifier: keyword(SwiftSyntax.Keyword.self)
+  │       │ │     │ ├─dot: period
+  │       │ │     │ ╰─name: identifier("description")
+  │       │ │     ├─[1]: AssignmentExprSyntax
+  │       │ │     │ ╰─assignToken: equal
+  │       │ │     ╰─[2]: IdentifierExprSyntax
+  │       │ │       ╰─identifier: identifier("description")
+  │       │ ╰─[4]: CodeBlockItemSyntax
+  │       │   ╰─item: SequenceExprSyntax
+  │       │     ╰─elements: ExprListSyntax
+  │       │       ├─[0]: MemberAccessExprSyntax
+  │       │       │ ├─base: IdentifierExprSyntax
+  │       │       │ │ ╰─identifier: keyword(SwiftSyntax.Keyword.self)
+  │       │       │ ├─dot: period
+  │       │       │ ╰─name: identifier("author")
+  │       │       ├─[1]: AssignmentExprSyntax
+  │       │       │ ╰─assignToken: equal
+  │       │       ╰─[2]: IdentifierExprSyntax
+  │       │         ╰─identifier: identifier("author")
+  │       ╰─rightBrace: rightBrace
+  ╰─rightBrace: rightBrace
+```
+
+### Retrieve the Variables
+
+To retrieve the variables of the Book struct, we need to follow the structure that is outlined to us in the syntax tree above. The member variable names and types of the Book structure belong to the node `members`, and `members` are child nodes of `memberBlock`. The internal content of `members` is similar to a list, which is used to store all the variables defined in the Book structure. So to access the members, we start with `structDecl.memberBlock.members`. 
+
+```swift
+memberBlock: MemberDeclBlockSyntax
+  ├─leftBrace: leftBrace
+  ├─members: MemberDeclListSyntax
+  │ ├─[0]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("id")	// <---- id defined here
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("Int")			// <---- type of id defined here
+  │ ├─[1]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("title") // <---- title defined here
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("String")   // <---- type of title defined here
+	...
+```
+
+We are interested in the declarations, in particular those declarations that actually declare variables. Here I will use `.compactMap()` to get a list of all the member declarations that are variables we define. Noted that the variables are declared as `VariableDeclSyntax` according to the syntax tree, so we will use `members.compactMap { $0.decl.as(VariableDeclSyntax.self) }` to retrieve all of the members that has a `VariableDeclSyntax` node inside them.
+
+```swift
+let members = structDecl.memberBlock.members
+let variableDecl = members.compactMap { $0.decl.as(VariableDeclSyntax.self) }
+```
+
+Next, we need to dig out the name and type of all the variables that we define. Let's just thrash out one `member`:
+
+```swift
+├─members: MemberDeclListSyntax
+  │ ├─[0]: MemberDeclListItemSyntax
+  │ │ ╰─decl: VariableDeclSyntax
+  │ │   ├─bindingKeyword: keyword(SwiftSyntax.Keyword.var)
+  │ │   ╰─bindings: PatternBindingListSyntax
+  │ │     ╰─[0]: PatternBindingSyntax
+  │ │       ├─pattern: IdentifierPatternSyntax
+  │ │       │ ╰─identifier: identifier("id") // <---- id defined here
+  │ │       ╰─typeAnnotation: TypeAnnotationSyntax
+  │ │         ├─colon: colon
+  │ │         ╰─type: SimpleTypeIdentifierSyntax
+  │ │           ╰─name: identifier("Int") // <---- type of id defined here
+	...
+```
+
+For variable `id`, both the pattern and type are what we care about. So we can use `variableDecl.compactMap { $0.bindings.first?.pattern }` to fetch all the pattern or the variable's name and use `variableDecl.compactMap { $0.bindings.first?.typeAnnotation?.type }` to get all the type of each variable. Now the code inside the `expansion()` method shows below:
+
+```swift
+public static func expansion(
+		of node: AttributeSyntax,
+    providingMembersOf declaration: some DeclGroupSyntax,
+    in context: some MacroExpansionContext
+) throws -> [SwiftSyntax.DeclSyntax] {
+        
+    guard let structDecl = declaration.as(StructDeclSyntax.self) else {
+        throw StructInitError.onlyApplicableToStruct
+    }
+        
+    let members = structDecl.memberBlock.members
+    let variableDecl = members.compactMap { $0.decl.as(VariableDeclSyntax.self) }
+    let variablesName = variableDecl.compactMap { $0.bindings.first?.pattern }
+    let variablesType = variableDecl.compactMap { $0.bindings.first?.typeAnnotation?.type }
+    
+    return []
+}
+```
+
+
 
 
 
