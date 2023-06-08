@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    let model: MusicModel
+    var model: MusicModel
     
     @State private var showAddMusicView: Bool = false
     @State private var musicToAdd: Music = Music(title: "", singer: "")

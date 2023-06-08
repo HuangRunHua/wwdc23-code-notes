@@ -8,9 +8,8 @@
 import Foundation
 import Observation
 
-@Observable class Article {
+@Observable
+class Article {
     var title: String = ""
     var subtitle: String = ""
-    
-    init() {}
 }

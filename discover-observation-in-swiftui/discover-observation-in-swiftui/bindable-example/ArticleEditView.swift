@@ -14,7 +14,8 @@ struct ArticleEditView: View {
     // is unavailable: The wrapped value must be an
     // object that conforms to Observable
     @Bindable var article: Article
-    
+
+//    @Binding var article: Article
     var body: some View {
         VStack {
             TextField("Title", text: $article.title)
@@ -25,4 +26,5 @@ struct ArticleEditView: View {
 
 #Preview {
     ArticleEditView(article: Article())
+//    ArticleEditView(article: .constant(Article()))
 }
