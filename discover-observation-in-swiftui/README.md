@@ -1,6 +1,6 @@
 # First glance at @Observable macro
 
-WWDC23 brings enormous magical new features in Swift. In Tuesday's video [Discover Observation in SwiftUI](https://developer.apple.com/wwdc23/10149) Philipe taught us how the `@Observable` macro can help simplify models and improve app's performance. In this article, I want to go over some concepts about `Observable`  in that video and then shows some examples of how to combine `@State`, `@Environment` `@Bindable` with the new `@Observable` macro.
+WWDC23 brings enormous magical new features in Swift. In Tuesday's video [Discover Observation in SwiftUI](https://developer.apple.com/wwdc23/10149) Philipe taught us how the `@Observable` macro can help simplify models and improve app's performance. In this article, I want to go over some concepts about `Observable`  in that video and then shows some examples of how to use `@Bindable` and the new `@Observable` macro.
 
 ## How does Observable Simplify Models?
 
@@ -166,3 +166,12 @@ The above code create an `Article` class with `@Observable` attached to it. `Art
 
 SwiftUI now only focus on the three primary property wrappers: `@State`, `@Environment` and `@Bindable`. There are only three questions you need to answer for using observable models in SwiftUI. Does this model need to be state of the view itself? If so, use `@State`. Does this model need to be part of the global environment of the application? If so, use `@Environment`. Does this model just need bindings? If so, use the new `@Bindable`. And if none of these questions have the answer as yes, just use the model as a property of your view.
 
+![](https://github.com/HuangRunHua/wwdc23-code-notes/raw/main/discover-observation-in-swiftui/pic1.jpg)
+
+## Source Code
+
+You can find the source code on [Github](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/discover-observation-in-swiftui).
+
+## Supports Me
+
+If you think this article is helpful, you can support me by downloading my first Mac App which named [FilerApp](https://huangrunhua.github.io/FilerApp/) on the [Mac App Store](https://apps.apple.com/us/app/filerapp/id1626627609?mt=12&itsct=apps_box_link&itscg=30200). FilerApp is a Finder extension for your Mac which enables you to easily create files in supported formats anywhere on the system. It is free and useful for many people. Hope you like it.
