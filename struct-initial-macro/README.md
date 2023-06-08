@@ -1,12 +1,12 @@
 # Use Swift macros to initialize a structure
 
-In Swift 5.9 Apple are introducing **Swift macros**. Swift macros allow you to generate that repetitive code at compile time, making your app's codebases more expressive and easier to read. In the WWDC video released by Apple on Tuesday: Write Swift Macros, Alex walks us through creating a simple Swift macro step by step. If you haven't seen the video, I highly recommend that you do so before coming back and reading this article.
+In Swift 5.9, Apple is introducing **Swift macros**, which facilitate the generation of repetitive code during compilation. This enhancement enhances the expressiveness and readability of your app's codebases. In the WWDC video unveiled by Apple on Tuesday, titled [Write Swift Macros](https://developer.apple.com/wwdc23/10166), Alex guides us meticulously through the process of creating a straightforward Swift macro. Prior to delving into this article, I highly recommend watching the aforementioned video for a comprehensive understanding.
 
-In this article, I will give a different example to let you know more about Swift macros and how to use Xcode to better write your own Swift macros.
+Within this article, I will present an alternative example to further acquaint you with Swift macros and illustrate how you can leverage Xcode to optimize the development of your own Swift macros.
 
 ## Example
 
-We know that when declaring a structure in swift, the structure can be initialized or not initialized. Therefore, in this article, we will create a Swift macro named `StructInit`. By using the keyword `@StructInit`, the compiler can automatically generate the operation of initializing a structure for you.
+It is evident that in Swift, when declaring a structure, one can choose to either explicitly initialize it or leave it uninitialized. Consequently, in this discourse, we shall conceive a Swift macro christened as `StructInit`. With the utilization of the `@StructInit` keyword, the compiler seamlessly engenders the process of structure initialization on your behalf.
 
 ```swift
 @StructInit
@@ -19,7 +19,7 @@ struct Book {
 }
 ```
 
-The above sample code is equivalent to the following code:
+By using the `@StructInit` macro the sample code above is equivalent to the following code:
 
 ```swift
 struct Book {
@@ -52,7 +52,7 @@ In order to create Swift Macros instead of creating a project you have to create
 
 ## Name Your Macro 
 
-Since you may use the macro for every situation It is wise to choose a nice name for your macro. Here I named my macro `StructInit`. This name is very intuitive, and it can be seen at a glance that this macro is used to initialize a structure.
+Since you may use the macro for every situation It is prudent to choose a nice name for your macro. Here I named my macro `StructInit`. This name is very intuitive, and it can be seen at a glance that this macro is used to initialize a structure.
 
 After naming your macro, you may need to declare your macro right in the package. Open file `struct_initial_macro.swift` (It is my file's name, the file you need to open is `your_package_name.swift`) and update the code there:
 
@@ -440,7 +440,64 @@ public static func expansion(
 }
 ```
 
+### Make Initializer Work
 
+Now `variablesName` contains all the variables' name while `variablesType` embodies all the variables' type. The last thing to do is to generate the Book struct Initializer code.  We start by constructing an `InitializerDeclSyntax`. Since the `init` needs both parameters input and expression inside the `init` code block, we choose the method `InitializerDeclSyntax(_ header:bodyBuilder:)` to help us write our code.
+
+Inside the `_ headr` we need to declare the 'init' keyword and all the parameters which in this Book struct case, is the following format:
+
+```swift
+init(id: Int, title: String, subtitle: String, description: String, author: String)
+```
+
+In oder to generate the code above, I create a new method called `generateInitialCode` which shows below:
+
+```swift
+public static func generateInitialCode(variablesName: [PatternSyntax],
+                                       variablesType: [TypeSyntax]) -> PartialSyntaxNodeString {
+		var initialCode: String = "init("
+		for (name, type) in zip(variablesName, variablesType) {
+				initialCode += "\(name): \(type), "
+		}
+		initialCode = String(initialCode.dropLast(2))
+		initialCode += ")"
+		return PartialSyntaxNodeString(stringLiteral: initialCode)
+}
+```
+
+`generateInitialCode` method returns a `PartialSyntaxNodeString`variable which can be the input parameter for `_ header` inside `InitializerDeclSyntax`:
+
+```swift
+let initializer = try InitializerDeclSyntax(StructInitMacro.generateInitialCode(variablesName: variablesName, variablesType: variablesType)) {
+		 
+}
+```
+
+Inside the `InitializerDeclSyntax`'s body, we just need a single expression to assign values to the member variables of the Book structure, here we use `for-loop` as well as `ExprSyntax()` to achieve that:
+
+```swift
+let initializer = try InitializerDeclSyntax(StructInitMacro.generateInitialCode(variablesName: variablesName, variablesType: variablesType)) {
+		for name in variablesName {
+				ExprSyntax("self.\(name) = \(name)")
+    }
+}
+```
+
+Finally, make sure that the `expansion()` method returns the `initializer`, so change the `return []` to the following code:
+
+```swift
+return [DeclSyntax(initializer)]
+```
+
+All done. Try some test examples to see what will happen when you attach `@StructInit` to a structure.
+
+## Source Code
+
+You can find the source code on [Github](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/struct-initial-macro).
+
+## Supports Me
+
+If you think this article is helpful, you can support me by downloading my first Mac App which named [FilerApp](https://huangrunhua.github.io/FilerApp/) on the [Mac App Store](https://apps.apple.com/us/app/filerapp/id1626627609?mt=12&itsct=apps_box_link&itscg=30200). FilerApp is a Finder extension for your Mac which enables you to easily create files in supported formats anywhere on the system. It is free and useful for many people. Hope you like it.
 
 
 
