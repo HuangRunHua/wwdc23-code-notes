@@ -12,9 +12,8 @@ struct discover_observation_in_swiftuiApp: App {
     @StateObject private var modelData = MusicModelOOversion()
     var body: some Scene {
         WindowGroup {
-             ContentView(model: MusicModel())
-//            ContentView_OOVersion()
-//                .environmentObject(modelData)
+//             ContentView(model: MusicModel())
+            ContentView_OOVersion(model: modelData)
         }
     }
 }

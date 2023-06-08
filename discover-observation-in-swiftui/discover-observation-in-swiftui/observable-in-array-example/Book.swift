@@ -9,17 +9,7 @@ import Foundation
 import Observation
 
 /// Storing `@Observable` types in Array
-//@Observable class Book: Identifiable {
-//    var id = UUID()
-//    var title: String = ""
-//    var loved: Bool = false
-//    
-//    init(title: String) {
-//        self.title = title
-//    }
-//}
-
-class Book: Identifiable {
+@Observable class Book: Identifiable {
     var id = UUID()
     var title: String = ""
     var loved: Bool = false
@@ -28,3 +18,13 @@ class Book: Identifiable {
         self.title = title
     }
 }
+
+//class Book: Identifiable {
+//    var id = UUID()
+//    var title: String = ""
+//    var loved: Bool = false
+//    
+//    init(title: String) {
+//        self.title = title
+//    }
+//}

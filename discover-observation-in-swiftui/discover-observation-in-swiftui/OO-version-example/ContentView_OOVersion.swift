@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView_OOVersion: View {
     
-    @EnvironmentObject var model: MusicModelOOversion
+    @ObservedObject var model: MusicModelOOversion
     
     var body: some View {
         List {
@@ -35,6 +35,5 @@ struct ContentView_OOVersion: View {
 }
 
 #Preview {
-    ContentView_OOVersion()
-        .environmentObject(MusicModelOOversion())
+    ContentView_OOVersion(model: MusicModelOOversion())
 }
