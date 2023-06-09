@@ -22,14 +22,15 @@ struct EventEditViewController: UIViewControllerRepresentable {
             let startDateComponents = DateComponents(year: startDate.year,
                                                      month: startDate.month,
                                                      day: startDate.day,
-                                                     hour: startDate.hour)
+                                                     hour: startDate.hour,
+                                                     minute: startDate.minute)
             event.startDate = Calendar.current.date(from: startDateComponents)!
             let endDateComponents = DateComponents(year: endDate.year,
                                                      month: endDate.month,
                                                      day: endDate.day,
-                                                     hour: endDate.hour)
+                                                     hour: endDate.hour,
+                                                     minute: endDate.minute)
             event.endDate = Calendar.current.date(from: endDateComponents)!
-            // event.timeZone = TimeZone(identifier: "America/Los_Angeles")
             event.location = movie.location
             event.notes = "Don't forget to bring popcorn🍿️!"
         }

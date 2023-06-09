@@ -14,6 +14,7 @@ struct Movie: Identifiable {
     var location: String
     var start: String
     var end: String
+    var image: String
     
     var startDate: (year: Int, month: Int, day: Int, hour: Int, minute: Int)? {
         if let components = _startDate?.get(.day, .month, .year, .hour, .minute) {

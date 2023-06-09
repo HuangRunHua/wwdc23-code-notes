@@ -7,16 +7,6 @@
 
 import SwiftUI
 import EventKitUI
-
-/// In iOS 17, your app can add events to Calendar without prompting
-/// the user for access using `EKEventEditViewController`. If the purpose of
-/// your app is to create, configure, and present calendar events in an editor UI,
-/// consider saving events to Calendar without prompting the user for authorization
-/// in your app following these steps:
-///  1. If your app includes `NSCalendarsUsageDescription`, remove this key.
-///  2. If your app requests permission using `requestAccess(to:completion:)` or
-///   `requestAccess(to:)`, remove these instance methods from your source code.
-///
 ///
 ///   In iOS 17, an app with write-only access can create and save events to Calendar, display
 ///   events using EKEventEditViewController, and allow the user to select another calendar using
@@ -33,7 +23,8 @@ struct ContentView: View {
                                      theater: "Wanda Cinemas",
                                      location: "Orient Cinema Rongchuangmao",
                                      start: "2023-06-10T02:39:32Z",
-                                     end: "2023-06-10T04:58:32Z")
+                                     end: "2023-06-10T04:58:32Z",
+                                     image: "movie")
     
     private let store = EKEventStore()
     
@@ -41,7 +32,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack(alignment: .bottom, content: {
-            Image("movie")
+            Image(movie.image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
             HStack {
