@@ -12,13 +12,13 @@ struct EventEditViewController: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     typealias UIViewControllerType = EKEventEditViewController
     
-    let movie: Movie
+    let ticket: Ticket
     
     private let store = EKEventStore()
     private var event: EKEvent {
         let event = EKEvent(eventStore: store)
-        event.title = movie.title
-        if let startDate = movie.startDate, let endDate = movie.endDate {
+        event.title = ticket.title
+        if let startDate = ticket.startDate, let endDate = ticket.endDate {
             let startDateComponents = DateComponents(year: startDate.year,
                                                      month: startDate.month,
                                                      day: startDate.day,
@@ -31,7 +31,7 @@ struct EventEditViewController: UIViewControllerRepresentable {
                                                      hour: endDate.hour,
                                                      minute: endDate.minute)
             event.endDate = Calendar.current.date(from: endDateComponents)!
-            event.location = movie.location
+            event.location = ticket.location
             event.notes = "Don't forget to bring popcorn🍿️!"
         }
         return event

@@ -1,5 +1,5 @@
 //
-//  Movie.swift
+//  Ticket.swift
 //  discover-calendar-and-eventkit
 //
 //  Created by Huang Runhua on 6/9/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Movie: Identifiable {
+struct Ticket: Identifiable {
     var id: UUID = UUID()
     var title: String
     var theater: String
