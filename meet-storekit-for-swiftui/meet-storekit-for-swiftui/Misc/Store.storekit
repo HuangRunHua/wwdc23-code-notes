@@ -1,0 +1,112 @@
+{
+  "identifier" : "E6C6C140",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "4A77BC7F",
+      "localizations" : [
+        {
+          "description" : "Hip-Hop/Rap 2020",
+          "displayName" : "Cold Winter",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.meet.storekit.for.swiftui.cold.winter",
+      "referenceName" : "Cold Winter",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "2B04B480",
+      "localizations" : [
+        {
+          "description" : "J-Pop 2014, Lossless",
+          "displayName" : "Platinum Disco",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.meet.storekit.for.swiftui.platinum.disco",
+      "referenceName" : "Platinum Disco",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "6C7321E2",
+      "localizations" : [
+        {
+          "description" : "International Pop 2015, Lossless",
+          "displayName" : "Drunk",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.meet.storekit.for.swiftui.drunk",
+      "referenceName" : "Drunk",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

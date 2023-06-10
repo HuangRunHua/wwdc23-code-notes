@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A9EFF4AC2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4AB2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift */; };
+		A9EFF4AE2A343D8E00F20785 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4AD2A343D8E00F20785 /* ContentView.swift */; };
+		A9EFF4B02A343D8F00F20785 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9EFF4AF2A343D8F00F20785 /* Assets.xcassets */; };
+		A9EFF4B32A343D8F00F20785 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9EFF4B22A343D8F00F20785 /* Preview Assets.xcassets */; };
+		A9EFF4BB2A34479B00F20785 /* Store.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A9EFF4BA2A34479B00F20785 /* Store.storekit */; };
+		A9EFF4BD2A344CF300F20785 /* MusicShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4BC2A344CF300F20785 /* MusicShop.swift */; };
+		A9EFF4C02A3450D500F20785 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4BF2A3450D500F20785 /* Music.swift */; };
+		A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */; };
+		A9EFF4C42A3468E400F20785 /* MusicProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A9EFF4A82A343D8E00F20785 /* meet-storekit-for-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meet-storekit-for-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9EFF4AB2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet_storekit_for_swiftuiApp.swift; sourceTree = "<group>"; };
+		A9EFF4AD2A343D8E00F20785 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A9EFF4AF2A343D8F00F20785 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A9EFF4B22A343D8F00F20785 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		A9EFF4BA2A34479B00F20785 /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
+		A9EFF4BC2A344CF300F20785 /* MusicShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicShop.swift; sourceTree = "<group>"; };
+		A9EFF4BF2A3450D500F20785 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+DataGeneration.swift"; sourceTree = "<group>"; };
+		A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProductIcon.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A9EFF4A52A343D8E00F20785 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A9EFF49F2A343D8E00F20785 = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4AA2A343D8E00F20785 /* meet-storekit-for-swiftui */,
+				A9EFF4A92A343D8E00F20785 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A9EFF4A92A343D8E00F20785 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4A82A343D8E00F20785 /* meet-storekit-for-swiftui.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A9EFF4AA2A343D8E00F20785 /* meet-storekit-for-swiftui */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4AB2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift */,
+				A9EFF4BE2A3450B100F20785 /* Model */,
+				A9EFF4AD2A343D8E00F20785 /* ContentView.swift */,
+				A9EFF4BC2A344CF300F20785 /* MusicShop.swift */,
+				A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */,
+				A9EFF4B92A34476B00F20785 /* Misc */,
+				A9EFF4AF2A343D8F00F20785 /* Assets.xcassets */,
+				A9EFF4B12A343D8F00F20785 /* Preview Content */,
+			);
+			path = "meet-storekit-for-swiftui";
+			sourceTree = "<group>";
+		};
+		A9EFF4B12A343D8F00F20785 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4B22A343D8F00F20785 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A9EFF4B92A34476B00F20785 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4BA2A34479B00F20785 /* Store.storekit */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		A9EFF4BE2A3450B100F20785 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4BF2A3450D500F20785 /* Music.swift */,
+				A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A9EFF4A72A343D8E00F20785 /* meet-storekit-for-swiftui */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9EFF4B62A343D8F00F20785 /* Build configuration list for PBXNativeTarget "meet-storekit-for-swiftui" */;
+			buildPhases = (
+				A9EFF4A42A343D8E00F20785 /* Sources */,
+				A9EFF4A52A343D8E00F20785 /* Frameworks */,
+				A9EFF4A62A343D8E00F20785 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "meet-storekit-for-swiftui";
+			productName = "meet-storekit-for-swiftui";
+			productReference = A9EFF4A82A343D8E00F20785 /* meet-storekit-for-swiftui.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A9EFF4A02A343D8E00F20785 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A9EFF4A72A343D8E00F20785 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A9EFF4A32A343D8E00F20785 /* Build configuration list for PBXProject "meet-storekit-for-swiftui" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A9EFF49F2A343D8E00F20785;
+			productRefGroup = A9EFF4A92A343D8E00F20785 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A9EFF4A72A343D8E00F20785 /* meet-storekit-for-swiftui */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A9EFF4A62A343D8E00F20785 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9EFF4B32A343D8F00F20785 /* Preview Assets.xcassets in Resources */,
+				A9EFF4B02A343D8F00F20785 /* Assets.xcassets in Resources */,
+				A9EFF4BB2A34479B00F20785 /* Store.storekit in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A9EFF4A42A343D8E00F20785 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9EFF4AE2A343D8E00F20785 /* ContentView.swift in Sources */,
+				A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */,
+				A9EFF4C42A3468E400F20785 /* MusicProductIcon.swift in Sources */,
+				A9EFF4BD2A344CF300F20785 /* MusicShop.swift in Sources */,
+				A9EFF4AC2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift in Sources */,
+				A9EFF4C02A3450D500F20785 /* Music.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A9EFF4B42A343D8F00F20785 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A9EFF4B52A343D8F00F20785 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A9EFF4B72A343D8F00F20785 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"meet-storekit-for-swiftui/Preview Content\"";
+				DEVELOPMENT_TEAM = YRB62S584T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.noreply-eamil.meet-storekit-for-swiftui";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A9EFF4B82A343D8F00F20785 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"meet-storekit-for-swiftui/Preview Content\"";
+				DEVELOPMENT_TEAM = YRB62S584T;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.noreply-eamil.meet-storekit-for-swiftui";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A9EFF4A32A343D8E00F20785 /* Build configuration list for PBXProject "meet-storekit-for-swiftui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9EFF4B42A343D8F00F20785 /* Debug */,
+				A9EFF4B52A343D8F00F20785 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9EFF4B62A343D8F00F20785 /* Build configuration list for PBXNativeTarget "meet-storekit-for-swiftui" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9EFF4B72A343D8F00F20785 /* Debug */,
+				A9EFF4B82A343D8F00F20785 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A9EFF4A02A343D8E00F20785 /* Project object */;
+}
