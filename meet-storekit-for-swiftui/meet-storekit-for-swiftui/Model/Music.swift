@@ -8,7 +8,7 @@
 import SwiftUI
 import Observation
 
-class Music {
+class Music: Identifiable {
     var id: String
     public var name: String
     public var summary: String
@@ -57,7 +57,7 @@ extension Music {
 
 extension Sequence where Element == Music {
     
-    func music(for productID: String) -> (Music, Music.Product)? {
+    func music(for productID: String) -> (music: Music, product: Music.Product)? {
         lazy.compactMap { music in
             music.products
                 .first { $0.id == productID }

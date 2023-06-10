@@ -8,14 +8,23 @@
 import SwiftUI
 
 struct MusicProductIcon: View {
-    var music: Music
+    
+    var productID: String
+    var music: Music? {
+        Music.allMusics.music(for: productID)?.music
+    }
+    
     var body: some View {
-        music.image
-            .scaledToFit()
-            .clipShape(RoundedRectangle(cornerRadius: 7))
+        if let music {
+            music.image
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 7))
+        } else {
+            EmptyView()
+        }
     }
 }
 
 #Preview {
-    MusicProductIcon(music: Music.allMusics[0])
+    MusicProductIcon(productID: "com.meet.storekit.for.swiftui.cold.winter")
 }

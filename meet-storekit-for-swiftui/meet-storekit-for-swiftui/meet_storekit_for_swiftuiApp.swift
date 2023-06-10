@@ -11,7 +11,7 @@ import SwiftUI
 struct meet_storekit_for_swiftuiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(musicModel: MusicModel())
         }
     }
 }

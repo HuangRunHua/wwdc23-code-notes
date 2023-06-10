@@ -16,6 +16,9 @@
 		A9EFF4C02A3450D500F20785 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4BF2A3450D500F20785 /* Music.swift */; };
 		A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */; };
 		A9EFF4C42A3468E400F20785 /* MusicProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */; };
+		A9EFF4C62A34973D00F20785 /* MusicPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C52A34973D00F20785 /* MusicPurchase.swift */; };
+		A9EFF4C82A34ADD200F20785 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C72A34ADD200F20785 /* DataModel.swift */; };
+		A9EFF4CA2A34C52500F20785 /* MusicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C92A34C52500F20785 /* MusicCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		A9EFF4BF2A3450D500F20785 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+DataGeneration.swift"; sourceTree = "<group>"; };
 		A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicProductIcon.swift; sourceTree = "<group>"; };
+		A9EFF4C52A34973D00F20785 /* MusicPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPurchase.swift; sourceTree = "<group>"; };
+		A9EFF4C72A34ADD200F20785 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		A9EFF4C92A34C52500F20785 /* MusicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,7 @@
 				A9EFF4AB2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift */,
 				A9EFF4BE2A3450B100F20785 /* Model */,
 				A9EFF4AD2A343D8E00F20785 /* ContentView.swift */,
+				A9EFF4C92A34C52500F20785 /* MusicCellView.swift */,
 				A9EFF4BC2A344CF300F20785 /* MusicShop.swift */,
 				A9EFF4C32A3468E400F20785 /* MusicProductIcon.swift */,
 				A9EFF4B92A34476B00F20785 /* Misc */,
@@ -93,6 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				A9EFF4BF2A3450D500F20785 /* Music.swift */,
+				A9EFF4C72A34ADD200F20785 /* DataModel.swift */,
+				A9EFF4C52A34973D00F20785 /* MusicPurchase.swift */,
 				A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */,
 			);
 			path = Model;
@@ -170,9 +179,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9EFF4AE2A343D8E00F20785 /* ContentView.swift in Sources */,
+				A9EFF4C62A34973D00F20785 /* MusicPurchase.swift in Sources */,
 				A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */,
 				A9EFF4C42A3468E400F20785 /* MusicProductIcon.swift in Sources */,
+				A9EFF4CA2A34C52500F20785 /* MusicCellView.swift in Sources */,
 				A9EFF4BD2A344CF300F20785 /* MusicShop.swift in Sources */,
+				A9EFF4C82A34ADD200F20785 /* DataModel.swift in Sources */,
 				A9EFF4AC2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift in Sources */,
 				A9EFF4C02A3450D500F20785 /* Music.swift in Sources */,
 			);
