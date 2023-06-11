@@ -13,14 +13,28 @@ struct SongProductShop: View {
         SongProduct.allSongProducts
     }
     
+    @State private var isRestoring = false
+    
     var body: some View {
         NavigationView {
             StoreView(ids: productIDs) { product in
                 SongProductProductIcon(productID: product.id)
             }
-            .navigationTitle("SongProduct Shop")
+            .navigationTitle("Song Shop")
             .storeButton(.hidden, for: .cancellation)
             .productViewStyle(.regular)
+            .toolbar {
+                ToolbarItem {
+                    Button("Restore") {
+                        isRestoring = true
+                        Task.detached {
+                            defer { isRestoring = false }
+                            try await AppStore.sync()
+                        }
+                    }
+                    .disabled(isRestoring)
+                }
+            }
         }
     }
 }
