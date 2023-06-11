@@ -15,29 +15,26 @@ extension Music {
               products: [
                   Product(
                       id: "com.meet.storekit.for.swiftui.cold.winter",
-                      quantity: 1
+                      index: 1
                   )
-              ],
-              priority: 1),
+              ]),
         Music(id: "Platinum Disco",
               name: "Platinum Disco",
               summary: "J-Pop 2014, Lossless",
               products: [
                   Product(
                       id: "com.meet.storekit.for.swiftui.platinum.disco",
-                      quantity: 1
+                      index: 1
                   )
-              ],
-              priority: 2),
+              ]),
         Music(id: "Drunk",
               name: "Drunk",
               summary: "International Pop 2015, Lossless",
               products: [
                   Product(
                       id: "com.meet.storekit.for.swiftui.drunk",
-                      quantity: 1
+                      index: 1
                   )
-              ],
-              priority: 3)
+              ])
     ]
 }

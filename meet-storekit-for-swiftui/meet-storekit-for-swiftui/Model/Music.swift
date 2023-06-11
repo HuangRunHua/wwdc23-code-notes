@@ -12,39 +12,30 @@ class Music: Identifiable {
     var id: String
     public var name: String
     public var summary: String
-    public var priority: Int
-    
     public var products: [Product]
-    public var ownedQuantity: Int
-    
-    public var isPremium: Bool {
-        !products.isEmpty
-    }
     
     public var orderedProducts: [Product] {
         products.sorted { lhs, rhs in
-            lhs.quantity < rhs.quantity
+            lhs.index < rhs.index
         }
     }
     
     public struct Product: Identifiable, Codable {
+        /// The product id
         public var id: String
-        public var quantity: Int
+        public var index: Int
     }
     
     public init(
         id: String,
         name: String,
         summary: String,
-        products: [Product] = [],
-        priority: Int? = nil
+        products: [Product] = []
     ) {
         self.id = id
         self.name = name
         self.summary = summary
         self.products = products
-        self.ownedQuantity = 0
-        self.priority = priority ?? (products.isEmpty ? 0 : 1)
     }
 }
 
