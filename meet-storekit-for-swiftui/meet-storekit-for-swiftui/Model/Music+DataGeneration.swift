@@ -1,5 +1,5 @@
 //
-//  Music+DataGeneration.swift
+//  SongProduct+DataGeneration.swift
 //  meet-storekit-for-swiftui
 //
 //  Created by Huang Runhua on 6/10/23.
@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension Music {
-    static let allMusics: [Music] = [
-        Music(id: "Cold Winter",
+extension SongProduct {
+    static let allSongProducts: [SongProduct] = [
+        SongProduct(id: "Cold Winter",
               name: "Cold Winter",
               summary: "Hip-Hop/Rap 2020",
               products: [
@@ -18,7 +18,7 @@ extension Music {
                       index: 1
                   )
               ]),
-        Music(id: "Platinum Disco",
+        SongProduct(id: "Platinum Disco",
               name: "Platinum Disco",
               summary: "J-Pop 2014, Lossless",
               products: [
@@ -27,7 +27,7 @@ extension Music {
                       index: 1
                   )
               ]),
-        Music(id: "Drunk",
+        SongProduct(id: "Drunk",
               name: "Drunk",
               summary: "International Pop 2015, Lossless",
               products: [

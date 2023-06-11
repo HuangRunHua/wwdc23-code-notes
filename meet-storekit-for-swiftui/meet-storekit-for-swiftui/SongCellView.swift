@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MusicCellView: View {
-    var music: Music
+struct SongCellView: View {
+    var music: SongProduct
     var body: some View {
         HStack {
             music.image
@@ -28,5 +28,5 @@ struct MusicCellView: View {
 }
 
 #Preview {
-    MusicCellView(music: Music.allMusics[0])
+    SongCellView(music: SongProduct.allSongProducts[0])
 }

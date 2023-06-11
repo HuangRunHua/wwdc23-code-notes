@@ -11,20 +11,20 @@ struct ContentView: View {
     
     @State private var showShopStore: Bool = false
     
-    var musicModel: MusicModel
+    var storeModel: StoreModel
     
     var body: some View {
         NavigationView {
             VStack {
-                if musicModel.ownedMusics.isEmpty {
+                if storeModel.ownedSongProducts.isEmpty {
                     Text("Empty Library")
                         .font(.title)
                         .foregroundStyle(.gray)
                         .navigationTitle("Songs")
                 } else {
                     List {
-                        ForEach(musicModel.ownedMusics) { music in
-                            MusicCellView(music: music)
+                        ForEach(storeModel.ownedSongProducts) { song in
+                            SongCellView(music: song)
                         }
                     }
                     .navigationTitle("Songs")
@@ -41,15 +41,15 @@ struct ContentView: View {
             })
         }
         .sheet(isPresented: $showShopStore, content: {
-            MusicShop()
+            SongProductShop()
         })
         .onInAppPurchaseCompletion { product, purchaseResult in
             if case .success(.success(let transaction)) = purchaseResult {
-                if let result = await MusicPurchase().process(transaction: transaction) {
+                if let result = await SongProductPurchase().process(transaction: transaction) {
                     if result.flag {
-                        musicModel.ownedMusics.append(result.music)
+                        storeModel.ownedSongProducts.append(result.song)
                     } else {
-                        musicModel.ownedMusics.removeAll(where: { $0.id == result.music.id })
+                        storeModel.ownedSongProducts.removeAll(where: { $0.id == result.song.id })
                     }
                 }
             }
@@ -59,5 +59,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView(musicModel: MusicModel())
+    ContentView(storeModel: StoreModel())
 }

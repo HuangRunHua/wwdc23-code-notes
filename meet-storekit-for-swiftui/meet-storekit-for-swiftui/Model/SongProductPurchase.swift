@@ -1,5 +1,5 @@
 //
-//  MusicPurchase.swift
+//  SongProductPurchase.swift
 //  meet-storekit-for-swiftui
 //
 //  Created by Huang Runhua on 6/10/23.
@@ -8,11 +8,11 @@
 import Foundation
 import StoreKit
 
-actor MusicPurchase {
+actor SongProductPurchase {
     
-    private(set) static var shared: MusicPurchase!
+    private(set) static var shared: SongProductPurchase!
     
-    func process(transaction verificationResult: VerificationResult<Transaction>) async -> (music: Music, flag: Bool)? {
+    func process(transaction verificationResult: VerificationResult<Transaction>) async -> (song: SongProduct, flag: Bool)? {
         let transaction: Transaction
         switch verificationResult {
         case .verified(let t):
@@ -23,13 +23,13 @@ actor MusicPurchase {
         }
         
         if case .nonConsumable = transaction.productType {
-            guard let (music, _) = music(for: transaction.productID) else {
+            guard let (song, _) = song(for: transaction.productID) else {
                 return nil
             }
             if transaction.revocationDate == nil, transaction.revocationReason == nil {
-                return (music, true)
+                return (song, true)
             } else {
-                return (music, false)
+                return (song, false)
             }
         } else {
             await transaction.finish()
@@ -37,7 +37,7 @@ actor MusicPurchase {
         return nil
     }
     
-    private func music(for productID: Product.ID) -> (Music, Music.Product)? {
-        Music.allMusics.music(for: productID)
+    private func song(for productID: Product.ID) -> (SongProduct, SongProduct.Product)? {
+        SongProduct.allSongProducts.song(for: productID)
     }
 }

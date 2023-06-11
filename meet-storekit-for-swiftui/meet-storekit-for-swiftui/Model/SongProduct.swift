@@ -1,5 +1,5 @@
 //
-//  Music.swift
+//  SongProduct.swift
 //  meet-storekit-for-swiftui
 //
 //  Created by Huang Runhua on 6/10/23.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Observation
 
-class Music: Identifiable {
+class SongProduct: Identifiable {
     var id: String
     public var name: String
     public var summary: String
@@ -39,20 +39,20 @@ class Music: Identifiable {
     }
 }
 
-extension Music {
+extension SongProduct {
     var image: Image {
         Image("Musics/\(id)")
             .resizable()
     }
 }
 
-extension Sequence where Element == Music {
+extension Sequence where Element == SongProduct {
     
-    func music(for productID: String) -> (music: Music, product: Music.Product)? {
-        lazy.compactMap { music in
-            music.products
+    func song(for productID: String) -> (song: SongProduct, product: SongProduct.Product)? {
+        lazy.compactMap { song in
+            song.products
                 .first { $0.id == productID }
-                .map { (music, $0) }
+                .map { (song, $0) }
         }
         .first
     }

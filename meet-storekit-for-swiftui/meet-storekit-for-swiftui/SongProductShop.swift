@@ -1,5 +1,5 @@
 //
-//  MusicShop.swift
+//  SongProductShop.swift
 //  meet-storekit-for-swiftui
 //
 //  Created by Huang Runhua on 6/10/23.
@@ -8,17 +8,17 @@
 import SwiftUI
 import StoreKit
 
-struct MusicShop: View {
-    private var musics: [Music] {
-        Music.allMusics
+struct SongProductShop: View {
+    private var musics: [SongProduct] {
+        SongProduct.allSongProducts
     }
     
     var body: some View {
         NavigationView {
             StoreView(ids: productIDs) { product in
-                MusicProductIcon(productID: product.id)
+                SongProductProductIcon(productID: product.id)
             }
-            .navigationTitle("Music Shop")
+            .navigationTitle("SongProduct Shop")
             .storeButton(.hidden, for: .cancellation)
             .productViewStyle(.regular)
         }
@@ -26,10 +26,10 @@ struct MusicShop: View {
 }
 
 #Preview {
-    MusicShop()
+    SongProductShop()
 }
 
-extension MusicShop {
+extension SongProductShop {
     private var productIDs: some Collection<Product.ID> {
         musics.lazy
             .flatMap(\.orderedProducts)
