@@ -23,13 +23,13 @@ actor SongProductPurchase {
         }
         
         if case .nonConsumable = transaction.productType {
-            guard let (song, _) = song(for: transaction.productID) else {
+            guard let songProduct = song(for: transaction.productID) else {
                 return nil
             }
             if transaction.revocationDate == nil, transaction.revocationReason == nil {
-                return (song, true)
+                return (songProduct, true)
             } else {
-                return (song, false)
+                return (songProduct, false)
             }
         } else {
             await transaction.finish()
@@ -37,7 +37,7 @@ actor SongProductPurchase {
         return nil
     }
     
-    private func song(for productID: Product.ID) -> (SongProduct, SongProduct.Product)? {
+    private func song(for productID: Product.ID) -> SongProduct? {
         SongProduct.allSongProducts.song(for: productID)
     }
 }

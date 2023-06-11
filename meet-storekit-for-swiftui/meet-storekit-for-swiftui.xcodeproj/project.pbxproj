@@ -19,6 +19,7 @@
 		A9EFF4C62A34973D00F20785 /* SongProductPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C52A34973D00F20785 /* SongProductPurchase.swift */; };
 		A9EFF4C82A34ADD200F20785 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C72A34ADD200F20785 /* StoreModel.swift */; };
 		A9EFF4CA2A34C52500F20785 /* SongCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C92A34C52500F20785 /* SongCellView.swift */; };
+		A9EFF4D22A3575E900F20785 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EFF4CC2A3574B500F20785 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		A9EFF4C52A34973D00F20785 /* SongProductPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProductPurchase.swift; sourceTree = "<group>"; };
 		A9EFF4C72A34ADD200F20785 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
 		A9EFF4C92A34C52500F20785 /* SongCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongCellView.swift; sourceTree = "<group>"; };
+		A9EFF4CC2A3574B500F20785 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		A9EFF4CE2A3575CE00F20785 /* StoreKitTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKitTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/StoreKitTest.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9EFF4D22A3575E900F20785 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +57,7 @@
 			children = (
 				A9EFF4AA2A343D8E00F20785 /* meet-storekit-for-swiftui */,
 				A9EFF4A92A343D8E00F20785 /* Products */,
+				A9EFF4CB2A3574B400F20785 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,6 +110,15 @@
 				A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A9EFF4CB2A3574B400F20785 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4CE2A3575CE00F20785 /* StoreKitTest.framework */,
+				A9EFF4CC2A3574B500F20785 /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

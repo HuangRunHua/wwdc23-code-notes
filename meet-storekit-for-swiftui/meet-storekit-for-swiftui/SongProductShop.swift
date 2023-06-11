@@ -32,7 +32,6 @@ struct SongProductShop: View {
 extension SongProductShop {
     private var productIDs: some Collection<Product.ID> {
         musics.lazy
-            .flatMap(\.orderedProducts)
-            .map(\.id)
+            .map(\.productID)
     }
 }

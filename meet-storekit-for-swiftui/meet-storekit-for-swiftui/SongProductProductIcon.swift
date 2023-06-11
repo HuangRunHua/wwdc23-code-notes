@@ -11,7 +11,7 @@ struct SongProductProductIcon: View {
     
     var productID: String
     var song: SongProduct? {
-        SongProduct.allSongProducts.song(for: productID)?.song
+        SongProduct.allSongProducts.song(for: productID)
     }
     
     var body: some View {

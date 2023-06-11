@@ -49,7 +49,7 @@ struct ContentView: View {
                     if result.flag {
                         storeModel.ownedSongProducts.append(result.song)
                     } else {
-                        storeModel.ownedSongProducts.removeAll(where: { $0.id == result.song.id })
+                        storeModel.ownedSongProducts.removeAll(where: { $0.productID == result.song.productID })
                     }
                 }
             }

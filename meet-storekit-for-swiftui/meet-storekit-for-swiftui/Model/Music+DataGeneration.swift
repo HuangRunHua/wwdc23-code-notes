@@ -9,32 +9,17 @@ import Foundation
 
 extension SongProduct {
     static let allSongProducts: [SongProduct] = [
-        SongProduct(id: "Cold Winter",
-              name: "Cold Winter",
-              summary: "Hip-Hop/Rap 2020",
-              products: [
-                  Product(
-                      id: "com.meet.storekit.for.swiftui.cold.winter",
-                      index: 1
-                  )
-              ]),
-        SongProduct(id: "Platinum Disco",
-              name: "Platinum Disco",
-              summary: "J-Pop 2014, Lossless",
-              products: [
-                  Product(
-                      id: "com.meet.storekit.for.swiftui.platinum.disco",
-                      index: 1
-                  )
-              ]),
-        SongProduct(id: "Drunk",
-              name: "Drunk",
-              summary: "International Pop 2015, Lossless",
-              products: [
-                  Product(
-                      id: "com.meet.storekit.for.swiftui.drunk",
-                      index: 1
-                  )
-              ])
+        SongProduct(id: 0,
+                    productID: "com.meet.storekit.for.swiftui.cold.winter",
+                    name: "Cold Winter",
+                    summary: "Hip-Hop/Rap 2020"),
+        SongProduct(id: 1,
+                    productID: "com.meet.storekit.for.swiftui.platinum.disco",
+                    name: "Platinum Disco",
+                    summary: "J-Pop 2014, Lossless"),
+        SongProduct(id: 2,
+                    productID: "com.meet.storekit.for.swiftui.drunk",
+                    name: "Drunk",
+                    summary: "International Pop 2015, Lossless")
     ]
 }
