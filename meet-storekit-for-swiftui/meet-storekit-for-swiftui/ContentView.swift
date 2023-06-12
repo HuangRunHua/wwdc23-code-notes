@@ -44,19 +44,22 @@ struct ContentView: View {
         .sheet(isPresented: $showShopStore, content: {
             SongProductShop()
         })
+        .onAppear(perform: {
+            SongProductPurchase.createSharedInstance(storeModel: storeModel)
+        })
         .onInAppPurchaseCompletion { product, purchaseResult in
             if case .success(.success(let transaction)) = purchaseResult {
-                await SongProductPurchase(storeModel: storeModel).process(transaction: transaction)
+                await SongProductPurchase.shared.process(transaction: transaction)
             }
             self.showShopStore = false
         }
         .task {
             // Begin observing StoreKit transaction updates in case a
             // transaction happens on another device.
-            await SongProductPurchase(storeModel: storeModel).observeTransactionUpdates()
+            await SongProductPurchase.shared.observeTransactionUpdates()
             // Check if we have any unfinished transactions where we
             // need to grant access to content
-            await SongProductPurchase(storeModel: storeModel).checkForUnfinishedTransactions()
+            await SongProductPurchase.shared.checkForUnfinishedTransactions()
         }
     }
 }

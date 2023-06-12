@@ -14,11 +14,15 @@ actor SongProductPurchase {
     
     private var updatesTask: Task<Void, Never>?
     
-    public init(storeModel: StoreModel) {
+    private init(storeModel: StoreModel) {
         self.storeModel = storeModel
     }
     
-    private(set) static var shared: SongProductPurchase = SongProductPurchase(storeModel: StoreModel())
+    private(set) static var shared: SongProductPurchase!
+    
+    static func createSharedInstance(storeModel: StoreModel) {
+        shared = SongProductPurchase(storeModel: storeModel)
+    }
     
     func process(transaction verificationResult: VerificationResult<Transaction>) async {
         let transaction: Transaction
