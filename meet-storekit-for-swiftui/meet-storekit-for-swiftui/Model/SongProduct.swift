@@ -13,6 +13,7 @@ class SongProduct: Identifiable {
     public var productID: String
     public var name: String
     public var summary: String
+    public var isPurchased: Bool
     
     var image: Image {
         Image("Musics/\(name)")
@@ -23,12 +24,14 @@ class SongProduct: Identifiable {
         id: Int,
         productID: String,
         name: String,
-        summary: String
+        summary: String,
+        isPurchased: Bool
     ) {
         self.id = id
         self.productID = productID
         self.name = name
         self.summary = summary
+        self.isPurchased = isPurchased
     }
 }
 

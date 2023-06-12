@@ -52,6 +52,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9D4563C2A36E6000020FE74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A9EFF4C92A34C52500F20785 /* SongCellView.swift */,
+				A9EFF4BC2A344CF300F20785 /* SongProductShop.swift */,
+				A9EFF4C32A3468E400F20785 /* SongProductProductIcon.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		A9EFF49F2A343D8E00F20785 = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				A9EFF4AB2A343D8E00F20785 /* meet_storekit_for_swiftuiApp.swift */,
-				A9EFF4BE2A3450B100F20785 /* Model */,
 				A9EFF4AD2A343D8E00F20785 /* ContentView.swift */,
-				A9EFF4C92A34C52500F20785 /* SongCellView.swift */,
-				A9EFF4BC2A344CF300F20785 /* SongProductShop.swift */,
-				A9EFF4C32A3468E400F20785 /* SongProductProductIcon.swift */,
+				A9EFF4BE2A3450B100F20785 /* Model */,
+				A9D4563C2A36E6000020FE74 /* Views */,
 				A9EFF4B92A34476B00F20785 /* Misc */,
 				A9EFF4AF2A343D8F00F20785 /* Assets.xcassets */,
 				A9EFF4B12A343D8F00F20785 /* Preview Content */,
