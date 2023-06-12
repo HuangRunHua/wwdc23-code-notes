@@ -10,19 +10,24 @@ import SwiftUI
 struct SongCellView: View {
     var music: SongProduct
     var body: some View {
-        HStack {
-            music.image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 60)
-                .clipShape(RoundedRectangle(cornerRadius: 7))
-            VStack(alignment: .leading) {
-                Text(music.name)
-                    .font(.system(size: 20))
-                Text(music.summary)
-                    .foregroundStyle(.gray)
+        VStack {
+            HStack {
+                music.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(music.name)
+                        .font(.system(size: 17))
+                    Text(music.summary)
+                        .foregroundStyle(.gray)
+                        .font(.system(size: 15))
+                }
+                .frame(height: 50)
+                Spacer()
             }
-            Spacer()
+            Divider()
         }
     }
 }

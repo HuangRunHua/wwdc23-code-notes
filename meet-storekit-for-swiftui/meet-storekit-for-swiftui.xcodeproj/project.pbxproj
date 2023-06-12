@@ -14,7 +14,7 @@
 		A9EFF4BB2A34479B00F20785 /* Store.storekit in Resources */ = {isa = PBXBuildFile; fileRef = A9EFF4BA2A34479B00F20785 /* Store.storekit */; };
 		A9EFF4BD2A344CF300F20785 /* SongProductShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4BC2A344CF300F20785 /* SongProductShop.swift */; };
 		A9EFF4C02A3450D500F20785 /* SongProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4BF2A3450D500F20785 /* SongProduct.swift */; };
-		A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */; };
+		A9EFF4C22A3459AF00F20785 /* SongProduct+DataGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C12A3459AF00F20785 /* SongProduct+DataGeneration.swift */; };
 		A9EFF4C42A3468E400F20785 /* SongProductProductIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C32A3468E400F20785 /* SongProductProductIcon.swift */; };
 		A9EFF4C62A34973D00F20785 /* SongProductPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C52A34973D00F20785 /* SongProductPurchase.swift */; };
 		A9EFF4C82A34ADD200F20785 /* StoreModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EFF4C72A34ADD200F20785 /* StoreModel.swift */; };
@@ -31,7 +31,7 @@
 		A9EFF4BA2A34479B00F20785 /* Store.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Store.storekit; sourceTree = "<group>"; };
 		A9EFF4BC2A344CF300F20785 /* SongProductShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProductShop.swift; sourceTree = "<group>"; };
 		A9EFF4BF2A3450D500F20785 /* SongProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProduct.swift; sourceTree = "<group>"; };
-		A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Music+DataGeneration.swift"; sourceTree = "<group>"; };
+		A9EFF4C12A3459AF00F20785 /* SongProduct+DataGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SongProduct+DataGeneration.swift"; sourceTree = "<group>"; };
 		A9EFF4C32A3468E400F20785 /* SongProductProductIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProductProductIcon.swift; sourceTree = "<group>"; };
 		A9EFF4C52A34973D00F20785 /* SongProductPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongProductPurchase.swift; sourceTree = "<group>"; };
 		A9EFF4C72A34ADD200F20785 /* StoreModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreModel.swift; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 				A9EFF4BF2A3450D500F20785 /* SongProduct.swift */,
 				A9EFF4C72A34ADD200F20785 /* StoreModel.swift */,
 				A9EFF4C52A34973D00F20785 /* SongProductPurchase.swift */,
-				A9EFF4C12A3459AF00F20785 /* Music+DataGeneration.swift */,
+				A9EFF4C12A3459AF00F20785 /* SongProduct+DataGeneration.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			files = (
 				A9EFF4AE2A343D8E00F20785 /* ContentView.swift in Sources */,
 				A9EFF4C62A34973D00F20785 /* SongProductPurchase.swift in Sources */,
-				A9EFF4C22A3459AF00F20785 /* Music+DataGeneration.swift in Sources */,
+				A9EFF4C22A3459AF00F20785 /* SongProduct+DataGeneration.swift in Sources */,
 				A9EFF4C42A3468E400F20785 /* SongProductProductIcon.swift in Sources */,
 				A9EFF4CA2A34C52500F20785 /* SongCellView.swift in Sources */,
 				A9EFF4BD2A344CF300F20785 /* SongProductShop.swift in Sources */,

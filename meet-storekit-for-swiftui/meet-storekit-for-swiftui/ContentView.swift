@@ -22,9 +22,10 @@ struct ContentView: View {
                         .foregroundStyle(.gray)
                         .navigationTitle("Songs")
                 } else {
-                    List {
+                    ScrollView {
                         ForEach(storeModel.ownedSongProducts) { song in
                             SongCellView(music: song)
+                                .padding([.leading, .trailing])
                         }
                     }
                     .navigationTitle("Songs")
@@ -45,16 +46,17 @@ struct ContentView: View {
         })
         .onInAppPurchaseCompletion { product, purchaseResult in
             if case .success(.success(let transaction)) = purchaseResult {
-//                await SongProductPurchase.shared.process(transaction: transaction)
                 await SongProductPurchase(storeModel: storeModel).process(transaction: transaction)
             }
-//            storeModel.ownedSongProducts = SongProduct.allSongProducts.filter({ $0.isPurchased })
             self.showShopStore = false
         }
         .task {
             // Begin observing StoreKit transaction updates in case a
             // transaction happens on another device.
             await SongProductPurchase(storeModel: storeModel).observeTransactionUpdates()
+            // Check if we have any unfinished transactions where we
+            // need to grant access to content
+            await SongProductPurchase(storeModel: storeModel).checkForUnfinishedTransactions()
         }
     }
 }
