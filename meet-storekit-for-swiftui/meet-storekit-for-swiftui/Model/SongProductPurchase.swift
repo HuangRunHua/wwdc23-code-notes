@@ -29,7 +29,7 @@ actor SongProductPurchase {
         switch verificationResult {
         case .verified(let t):
             transaction = t
-        case .unverified( _, let error):
+        case .unverified(_, let error):
             print("error in process: \(error.localizedDescription)")
             return
         }
@@ -59,8 +59,11 @@ actor SongProductPurchase {
     }
     
     func observeTransactionUpdates() async {
-        for await update in Transaction.updates {
-            await self.process(transaction: update)
+        self.updatesTask = Task { [weak self] in
+            for await update in Transaction.updates {
+                guard let self else { break }
+                await self.process(transaction: update)
+            }
         }
     }
     
