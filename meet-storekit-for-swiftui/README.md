@@ -207,10 +207,10 @@ Next we need to get all the product identifiers:
 import StoreKit
 struct SongProductShop: View {
     ...
-		private var productIDs: some Collection<Product.ID> {
-				musics.lazy
-							.map(\.productID)
-		}
+    private var productIDs: some Collection<Product.ID> {
+	musics.lazy
+	      .map(\.productID)
+    }
     ...
 }
 ```
