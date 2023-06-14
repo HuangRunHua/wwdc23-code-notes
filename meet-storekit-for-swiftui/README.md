@@ -336,7 +336,7 @@ actor SongProductPurchase {
   
   	private func song(for productID: Product.ID) -> SongProduct? {
         SongProduct.allSongProducts.song(for: productID)
-    }d
+    }
 }
 ```
 
