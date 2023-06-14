@@ -64,7 +64,6 @@
 				A963C56F2A39E839005F2BB2 /* meet_subscriptionstoreview_in_iOS17App.swift */,
 				A963C5712A39E839005F2BB2 /* ContentView.swift */,
 				A963C5832A39F343005F2BB2 /* Model */,
-				A963C5802A39ED90005F2BB2 /* Store */,
 				A963C5882A39F46D005F2BB2 /* Views */,
 				A963C57D2A39E892005F2BB2 /* Misc */,
 				A963C5732A39E83A005F2BB2 /* Assets.xcassets */,
@@ -102,6 +101,7 @@
 			children = (
 				A963C5842A39F355005F2BB2 /* PassStatusModel.swift */,
 				A963C5862A39F39F005F2BB2 /* PassStatus.swift */,
+				A963C5802A39ED90005F2BB2 /* Store */,
 			);
 			path = Model;
 			sourceTree = "<group>";
