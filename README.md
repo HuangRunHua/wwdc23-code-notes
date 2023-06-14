@@ -1,2 +1,2 @@
-# wwdc23-code-notes
+# WWDC23 Code Notes
  My Notes of WWDC23
