@@ -59,11 +59,8 @@ actor SongProductPurchase {
     }
     
     func observeTransactionUpdates() async {
-        self.updatesTask = Task { [weak self] in
-            for await update in Transaction.updates {
-                guard let self else { break }
-                await self.process(transaction: update)
-            }
+        for await update in Transaction.updates {
+            await self.process(transaction: update)
         }
     }
     
