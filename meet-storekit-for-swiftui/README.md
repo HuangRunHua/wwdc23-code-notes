@@ -4,9 +4,9 @@ A Complete Guide to the Implementation of In-App Purchase in iOS 17. Explore how
 
 ![](https://github.com/HuangRunHua/wwdc23-code-notes/raw/main/meet-storekit-for-swiftui/article-images/IMG_7762.JPEG)
 
-Starting from iOS 17, we no longer need to work hard to design the interface of in-app purchases, because Apple provides us with a very good template. WWDC23 brings a brand new StoreKit which embedded **StoreKit Views** that allow developers to implement a streamlined in-app purchase interface with a few lines of code. At the same time, a series of transaction-related processes such as checking whether the user pays within the app can be fulfilled with simplified code.
+Commencing from iOS 17, we are relieved from the arduous task of meticulously crafting the in-app purchase interface, for Apple has graciously bestowed upon us a splendid template. The advent of WWDC23 heralds the arrival of an all-new StoreKit2, replete with the inclusion of **StoreKit Views**, empowering developers to effortlessly manifest a seamless in-app purchase interface with mere snippets of code. Simultaneously, a gamut of transaction-related processes, such as verifying in-app payments, can be executed with utmost simplicity through streamlined code.
 
-In the past few days, I have been studying how to use concise code to implement in-app purchase on iOS 17 and effectively handle a series of operations such as user cancellation and refund. In this article, I will introduce how the new `StoreView` allows you to implement a streamlined in-app purchase interface with one line of code, and use an example to fully demonstrate how to support non-consumable in-app purchases in your app.
+In recent days, my endeavors have revolved around comprehending the art of employing succinct code to orchestrate in-app purchases on iOS 17, while deftly handling an array of operations encompassing user cancellations and refunds. This article endeavors to elucidate how the novel `StoreView` enables the realization of a streamlined in-app purchase interface with a solitary line of code, while exemplifying its implementation through a practical demonstration elucidating the support for non-consumable in-app purchases within your application.
 
 ## Example
 
