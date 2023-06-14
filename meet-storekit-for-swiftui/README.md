@@ -224,9 +224,9 @@ struct SongProductShop: View {
     var body: some View {
         NavigationView {
             StoreView(ids: productIDs)
-            		.navigationTitle("Song Shop")
-            		.storeButton(.hidden, for: .cancellation)
-            		.productViewStyle(.regular)
+            	.navigationTitle("Song Shop")
+            	.storeButton(.hidden, for: .cancellation)
+            	.productViewStyle(.regular)
         }
     }
 }
@@ -349,15 +349,15 @@ struct ContentView: View {
   	...
   	var body: some View {
       	NavigationView {...}
-      			.onAppear(perform: {
-            		SongProductPurchase.createSharedInstance(storeModel: storeModel)
-        		})
-        		.onInAppPurchaseCompletion { product, purchaseResult in
-            		if case .success(.success(let transaction)) = purchaseResult {
-                		await SongProductPurchase.shared.process(transaction: transaction)
-            		}
-            		self.showShopStore = false
-        		}
+      		.onAppear(perform: {
+            	SongProductPurchase.createSharedInstance(storeModel: storeModel)
+        	})
+        	.onInAppPurchaseCompletion { product, purchaseResult in
+            	if case .success(.success(let transaction)) = purchaseResult {
+                	await SongProductPurchase.shared.process(transaction: transaction)
+            	}
+            	self.showShopStore = false
+        	}
     }
 }
 ```
@@ -393,16 +393,16 @@ struct ContentView: View {
   	...
   	var body: some View {
       	NavigationView {...}
-      			.onAppear(perform: {...})
-        		.onInAppPurchaseCompletion {...}
-      			.task {
-            		// Begin observing StoreKit transaction updates in case a
-            		// transaction happens on another device.
-            		await SongProductPurchase.shared.observeTransactionUpdates()
-            		// Check if we have any unfinished transactions where we
-            		// need to grant access to content
-            		await SongProductPurchase.shared.checkForUnfinishedTransactions()
-        		}
+      		.onAppear(perform: {...})
+        	.onInAppPurchaseCompletion {...}
+      		.task {
+            	// Begin observing StoreKit transaction updates in case a
+            	// transaction happens on another device.
+            	await SongProductPurchase.shared.observeTransactionUpdates()
+            	// Check if we have any unfinished transactions where we
+            	// need to grant access to content
+            	await SongProductPurchase.shared.checkForUnfinishedTransactions()
+        	}
     }
 }
 ```
