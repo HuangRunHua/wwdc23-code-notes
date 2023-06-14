@@ -12,8 +12,6 @@ actor SongProductPurchase {
     
     var storeModel: StoreModel
     
-    private var updatesTask: Task<Void, Never>?
-    
     private init(storeModel: StoreModel) {
         self.storeModel = storeModel
     }

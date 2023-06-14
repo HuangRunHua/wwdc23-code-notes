@@ -20,7 +20,6 @@ struct ContentView: View {
                     Text("Empty Library")
                         .font(.title)
                         .foregroundStyle(.gray)
-                        .navigationTitle("Songs")
                 } else {
                     ScrollView {
                         ForEach(storeModel.ownedSongProducts) { song in
@@ -28,9 +27,9 @@ struct ContentView: View {
                                 .padding([.leading, .trailing])
                         }
                     }
-                    .navigationTitle("Songs")
                 }
             }
+            .navigationTitle("Songs")
             .toolbar(content: {
                 ToolbarItem {
                     Button(action: {

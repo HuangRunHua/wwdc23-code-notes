@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Observation
 
 class SongProduct: Identifiable {
     public var id: Int
