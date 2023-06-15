@@ -91,9 +91,10 @@
           "groupNumber" : 1,
           "internalID" : "67522F32",
           "introductoryOffer" : {
+            "displayPrice" : "0.99",
             "internalID" : "C032836B",
             "paymentMode" : "free",
-            "subscriptionPeriod" : "P1M"
+            "subscriptionPeriod" : "P3D"
           },
           "localizations" : [
             {
@@ -117,12 +118,12 @@
           ],
           "displayPrice" : "12.99",
           "familyShareable" : false,
-          "groupNumber" : 2,
+          "groupNumber" : 1,
           "internalID" : "22A924F3",
           "introductoryOffer" : {
             "internalID" : "543C4327",
             "paymentMode" : "free",
-            "subscriptionPeriod" : "P1W"
+            "subscriptionPeriod" : "P3D"
           },
           "localizations" : [
             {
@@ -146,7 +147,7 @@
           ],
           "displayPrice" : "39.99",
           "familyShareable" : false,
-          "groupNumber" : 3,
+          "groupNumber" : 1,
           "internalID" : "469A83B4",
           "introductoryOffer" : {
             "displayPrice" : "0.99",
