@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9311E1F2A3AE1B500C7B5E8 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9311E1E2A3AE1B500C7B5E8 /* StoreKit.framework */; };
 		A963C5702A39E839005F2BB2 /* meet_subscriptionstoreview_in_iOS17App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C56F2A39E839005F2BB2 /* meet_subscriptionstoreview_in_iOS17App.swift */; };
 		A963C5722A39E839005F2BB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C5712A39E839005F2BB2 /* ContentView.swift */; };
 		A963C5742A39E83A005F2BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A963C5732A39E83A005F2BB2 /* Assets.xcassets */; };
@@ -16,9 +17,12 @@
 		A963C5852A39F355005F2BB2 /* PassStatusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C5842A39F355005F2BB2 /* PassStatusModel.swift */; };
 		A963C5872A39F39F005F2BB2 /* PassStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C5862A39F39F005F2BB2 /* PassStatus.swift */; };
 		A963C58A2A39F48A005F2BB2 /* SubscriptionShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C5892A39F48A005F2BB2 /* SubscriptionShopView.swift */; };
+		A963C58C2A3AD288005F2BB2 /* SubscriptionShopContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C58B2A3AD288005F2BB2 /* SubscriptionShopContent.swift */; };
+		A963C58E2A3ADB8C005F2BB2 /* ProductSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A963C58D2A3ADB8C005F2BB2 /* ProductSubscription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9311E1E2A3AE1B500C7B5E8 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		A963C56C2A39E839005F2BB2 /* meet-subscriptionstoreview-in-iOS17.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meet-subscriptionstoreview-in-iOS17.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A963C56F2A39E839005F2BB2 /* meet_subscriptionstoreview_in_iOS17App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = meet_subscriptionstoreview_in_iOS17App.swift; sourceTree = "<group>"; };
 		A963C5712A39E839005F2BB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -29,6 +33,8 @@
 		A963C5842A39F355005F2BB2 /* PassStatusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassStatusModel.swift; sourceTree = "<group>"; };
 		A963C5862A39F39F005F2BB2 /* PassStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassStatus.swift; sourceTree = "<group>"; };
 		A963C5892A39F48A005F2BB2 /* SubscriptionShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionShopView.swift; sourceTree = "<group>"; };
+		A963C58B2A3AD288005F2BB2 /* SubscriptionShopContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionShopContent.swift; sourceTree = "<group>"; };
+		A963C58D2A3ADB8C005F2BB2 /* ProductSubscription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSubscription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,17 +42,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9311E1F2A3AE1B500C7B5E8 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9311E1D2A3AE1B500C7B5E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9311E1E2A3AE1B500C7B5E8 /* StoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A963C5632A39E839005F2BB2 = {
 			isa = PBXGroup;
 			children = (
 				A963C56E2A39E839005F2BB2 /* meet-subscriptionstoreview-in-iOS17 */,
 				A963C56D2A39E839005F2BB2 /* Products */,
+				A9311E1D2A3AE1B500C7B5E8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +117,7 @@
 			children = (
 				A963C5842A39F355005F2BB2 /* PassStatusModel.swift */,
 				A963C5862A39F39F005F2BB2 /* PassStatus.swift */,
+				A963C58D2A3ADB8C005F2BB2 /* ProductSubscription.swift */,
 				A963C5802A39ED90005F2BB2 /* Store */,
 			);
 			path = Model;
@@ -110,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				A963C5892A39F48A005F2BB2 /* SubscriptionShopView.swift */,
+				A963C58B2A3AD288005F2BB2 /* SubscriptionShopContent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -185,7 +203,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A963C58C2A3AD288005F2BB2 /* SubscriptionShopContent.swift in Sources */,
 				A963C5722A39E839005F2BB2 /* ContentView.swift in Sources */,
+				A963C58E2A3ADB8C005F2BB2 /* ProductSubscription.swift in Sources */,
 				A963C5872A39F39F005F2BB2 /* PassStatus.swift in Sources */,
 				A963C5852A39F355005F2BB2 /* PassStatusModel.swift in Sources */,
 				A963C5822A39ED9D005F2BB2 /* PassIdentifiers.swift in Sources */,
@@ -327,6 +347,7 @@
 				DEVELOPMENT_TEAM = YRB62S584T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -356,6 +377,7 @@
 				DEVELOPMENT_TEAM = YRB62S584T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Movies;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -30,5 +30,18 @@ enum PassStatus: Comparable, Hashable {
         case ids.yearly: self = .yearly
         default: return nil
         }
-    }        
+    }
+    
+    var description: String {
+        switch self {
+        case .notSubscribed:
+            "Not Subscribed"
+        case .monthly:
+            "Monthly"
+        case .quarterly:
+            "Quarterly"
+        case .yearly:
+            "Yearly"
+        }
+    }
 }

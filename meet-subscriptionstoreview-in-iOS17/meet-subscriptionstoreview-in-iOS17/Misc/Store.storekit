@@ -19,11 +19,14 @@
           "index" : 2,
           "type" : "generic"
         },
-        "enabled" : true,
+        "enabled" : false,
         "name" : "Load Products"
       },
       {
-        "current" : null,
+        "current" : {
+          "index" : 1,
+          "type" : "purchase"
+        },
         "enabled" : false,
         "name" : "Purchase"
       },
@@ -39,10 +42,10 @@
       },
       {
         "current" : {
-          "index" : 2,
+          "index" : 0,
           "type" : "generic"
         },
-        "enabled" : true,
+        "enabled" : false,
         "name" : "Subscription Status"
       },
       {
@@ -66,7 +69,7 @@
         "name" : "Offer Code Redeem Sheet"
       }
     ],
-    "_timeRate" : 1002
+    "_timeRate" : 1003
   },
   "subscriptionGroups" : [
     {
