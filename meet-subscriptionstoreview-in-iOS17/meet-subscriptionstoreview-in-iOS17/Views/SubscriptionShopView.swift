@@ -9,10 +9,7 @@ import SwiftUI
 import StoreKit
 
 struct SubscriptionShopView: View {
-    
-    @Environment(PassStatusModel.self) var passStatusModel: PassStatusModel
     @Environment(\.passIDs.group) private var passGroupID
-    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         SubscriptionStoreView(groupID: passGroupID) {
@@ -27,5 +24,4 @@ struct SubscriptionShopView: View {
 
 #Preview {
     SubscriptionShopView()
-        .environment(PassStatusModel())
 }

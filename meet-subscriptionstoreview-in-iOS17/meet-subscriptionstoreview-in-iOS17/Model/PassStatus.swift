@@ -14,15 +14,6 @@ enum PassStatus: Comparable, Hashable {
     case quarterly
     case yearly
     
-    init(levelOfService: Int) {
-        self = switch levelOfService {
-        case 1: .monthly
-        case 2: .quarterly
-        case 3: .yearly
-        default: .notSubscribed
-        }
-    }
-    
     init?(productID: Product.ID, ids: PassIdentifiers) {
         switch productID {
         case ids.monthly: self = .monthly

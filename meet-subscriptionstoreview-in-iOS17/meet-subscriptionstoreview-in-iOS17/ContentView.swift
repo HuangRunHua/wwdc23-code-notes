@@ -42,13 +42,13 @@ struct ContentView: View {
             .navigationTitle("Account")
             .sheet(isPresented: $showScriptionView, content: {
                 SubscriptionShopView()
-                    .environment(passStatusModel)
             })
-            .manageSubscriptionsSheet(
-                isPresented: $presentingSubscriptionSheet,
-                subscriptionGroupID: passIDs.group
-            )
+            
         }
+        .manageSubscriptionsSheet(
+            isPresented: $presentingSubscriptionSheet,
+            subscriptionGroupID: passIDs.group
+        )
         .onAppear(perform: {
             ProductSubscription.createSharedInstance()
         })

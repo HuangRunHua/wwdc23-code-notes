@@ -18,9 +18,6 @@ actor ProductSubscription {
         shared = ProductSubscription()
     }
     
-    // For other in-app purchase use this method to check for status.
-    func process(transaction verificationResult: VerificationResult<Transaction>) async {}
-    
     // Subscription Only Handle Here.
     func status(for statuses: [Product.SubscriptionInfo.Status], ids: PassIdentifiers) -> PassStatus {
         let effectiveStatus = statuses.max { lhs, rhs in
@@ -61,6 +58,17 @@ actor ProductSubscription {
         return PassStatus(productID: transaction.productID, ids: ids) ?? .notSubscribed
     }
     
+    
+}
+
+// To discard this warning:
+//  Making a purchase without listening for
+//  transaction updates risks missing successful purchases.
+//  Create a Task to iterate Transaction.updates at launch.
+extension ProductSubscription {
+    // For other in-app purchase use this method to check for status.
+    func process(transaction verificationResult: VerificationResult<Transaction>) async {}
+    
     func checkForUnfinishedTransactions() async {
         for await transaction in Transaction.unfinished {
             Task.detached(priority: .background) {
@@ -69,10 +77,6 @@ actor ProductSubscription {
         }
     }
     
-    // To discard this warning:
-    //  Making a purchase without listening for
-    //  transaction updates risks missing successful purchases.
-    //  Create a Task to iterate Transaction.updates at launch.
     func observeTransactionUpdates() async {
         for await update in Transaction.updates {
             await self.process(transaction: update)
