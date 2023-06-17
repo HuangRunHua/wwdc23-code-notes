@@ -6,12 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NoteEditView: View {
-//    @Bindable var note: Note
-    @Binding var title: String
-    @Binding var subtitle: String
-    @Binding var content: String
+    @State var title: String = "ETIAM SIT AMETEST DONEC"
+    @State var subtitle: String = "Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor fermentum."
+    @State var content: String = "Vitae et, nunc hasellus hasellus, donec dolor, id elit donec hasellus ac pede, quam amet. Arcu nibh maecenas ac, nullam duis elit, ligula pellentesque viverra morbi tellus molestie, mi. Sodales nunc suscipit sit pretium aliquet integer, consectetuer pede, et risus hac diam at, commodo in."
+    
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) private var modelContext
 
     var body: some View {
         NavigationView {
@@ -44,13 +47,18 @@ struct NoteEditView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
-                        
+                        dismiss()
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        
+                        let note = Note(title: title,
+                                        subtitle: subtitle,
+                                        content: content)
+                        modelContext.insert(object: note)
+                        dismiss()
                     }
+                    .disabled(title=="" ? true: false)
                 }
             }
         }
@@ -58,17 +66,7 @@ struct NoteEditView: View {
 }
 
 #Preview {
-    NoteEditView(title: .constant("ETIAM SIT AMETEST DONEC"),
-                 subtitle: .constant(
-                    """
-                    Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor fermentum.
-                    """
-                 ),
-                 content: .constant(
-                    """
-                    Vitae et, nunc hasellus hasellus, donec dolor, id elit donec hasellus ac pede, quam amet. Arcu nibh maecenas ac, nullam duis elit, ligula pellentesque viverra morbi tellus molestie, mi. Sodales nunc suscipit sit pretium aliquet integer, consectetuer pede, et risus hac diam at, commodo in.
-                    """
-                 ))
+    NoteEditView()
 }
 
 struct MarkerView: View {

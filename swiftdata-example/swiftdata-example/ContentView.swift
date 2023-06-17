@@ -39,6 +39,9 @@ struct ContentView: View {
                 }
             }
         }
+        .sheet(isPresented: $showNewNoteView, content: {
+            NoteEditView()
+        })
     }
 }
 
