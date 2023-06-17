@@ -5,13 +5,18 @@
 //  Created by Huang Runhua on 6/17/23.
 //
 
+// Bugs:
+//  1. 进入编辑界面时候无论什么操作都会自动被保存
+// Shartage:
+//  1. 删除功能
+
 import SwiftUI
 import SwiftData
 
 struct NoteEditView: View {
-    @State var title: String = "ETIAM SIT AMETEST DONEC"
-    @State var subtitle: String = "Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor fermentum."
-    @State var content: String = "Vitae et, nunc hasellus hasellus, donec dolor, id elit donec hasellus ac pede, quam amet. Arcu nibh maecenas ac, nullam duis elit, ligula pellentesque viverra morbi tellus molestie, mi. Sodales nunc suscipit sit pretium aliquet integer, consectetuer pede, et risus hac diam at, commodo in."
+    
+    let edit: Bool
+    @Bindable var note: Note
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -22,19 +27,19 @@ struct NoteEditView: View {
                 VStack {
                     HStack(alignment: .top) {
                         MarkerView(text: "H1").frame(width: 20)
-                        TextField("Enter title...", text: $title, axis: .vertical)
+                        TextField("Enter title...", text: $note.title, axis: .vertical)
                             .font(.title)
                             .bold()
                     }
                     HStack(alignment: .top) {
                         MarkerView(text: "H2").frame(width: 20)
-                        TextField("Enter subtitle...", text: $subtitle, axis: .vertical)
+                        TextField("Enter subtitle...", text: $note.subtitle, axis: .vertical)
                             .font(.headline)
                     }
                     .padding(.top, -7)
                     HStack(alignment: .top) {
                         MarkerView(text: "B1").frame(width: 20)
-                        TextField("Enter content...", text: $content, axis: .vertical)
+                        TextField("Enter content...", text: $note.content, axis: .vertical)
                             .foregroundStyle(Color.init(UIColor.darkGray))
                             
                     }
@@ -52,21 +57,18 @@ struct NoteEditView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        let note = Note(title: title,
-                                        subtitle: subtitle,
-                                        content: content)
-                        modelContext.insert(object: note)
+                        if edit {
+//                            try modelContext.save()
+                        } else {
+                            modelContext.insert(object: note)
+                        }
                         dismiss()
                     }
-                    .disabled(title=="" ? true: false)
+                    .disabled(note.title=="" ? true: false)
                 }
             }
         }
     }
-}
-
-#Preview {
-    NoteEditView()
 }
 
 struct MarkerView: View {

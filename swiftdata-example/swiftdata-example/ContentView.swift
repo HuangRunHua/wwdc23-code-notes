@@ -11,6 +11,9 @@ import SwiftData
 struct ContentView: View {
     @Query(sort: \.createDate, order: .reverse) private var notes: [Note]
     @State private var showNewNoteView: Bool = false
+    @State private var note: Note = Note(title: "ETIAM SIT AMETEST DONEC",
+                                         subtitle: "Lorem ipsum dolor sit amet, ligula suspendisse nulla pretium, rhoncus tempor fermentum.",
+                                         content: "Vitae et, nunc hasellus hasellus, donec dolor, id elit donec hasellus ac pede, quam amet. Arcu nibh maecenas ac, nullam duis elit, ligula pellentesque viverra morbi tellus molestie, mi.")
     
     var body: some View {
         NavigationView {
@@ -40,7 +43,7 @@ struct ContentView: View {
             }
         }
         .sheet(isPresented: $showNewNoteView, content: {
-            NoteEditView()
+            NoteEditView(edit: false, note: note)
         })
     }
 }

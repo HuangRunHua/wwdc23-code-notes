@@ -9,7 +9,8 @@ import SwiftUI
 
 struct NoteView: View {
     
-    var note: Note
+    @Bindable var note: Note
+    @State private var showEditView: Bool = false
     
     var body: some View {
         ScrollView {
@@ -37,5 +38,17 @@ struct NoteView: View {
         }
         .fontDesign(.rounded)
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(action: {
+                    showEditView = true
+                }, label: {
+                    Text("Edit")
+                })
+            }
+        }
+        .sheet(isPresented: $showEditView, content: {
+            NoteEditView(edit: true, note: note)
+        })
     }
 }
