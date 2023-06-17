@@ -28,24 +28,26 @@ struct NoteEditView: View {
                         TextField("Enter subtitle...", text: $subtitle, axis: .vertical)
                             .font(.headline)
                     }
+                    .padding(.top, -7)
                     HStack(alignment: .top) {
                         MarkerView(text: "B1").frame(width: 20)
                         TextField("Enter content...", text: $content, axis: .vertical)
                             .foregroundStyle(Color.init(UIColor.darkGray))
                             
                     }
-                    .frame(height: .infinity)
+                    .padding(.top, -3)
                 }
+                .fontDesign(.rounded)
                 .padding()
             }
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
+                ToolbarItem(placement: .topBarLeading) {
                     Button("Cancel") {
                         
                     }
                 }
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         
                     }
