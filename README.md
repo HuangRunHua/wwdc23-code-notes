@@ -13,3 +13,4 @@ Given the ever-evolving landscape of WWDC, which burgeons with new frameworks an
 - [First glance at @Observable macro](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/discover-observation-in-swiftui)
 - [EventKitUI in iOS 17](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/discover-calendar-and-eventkit)
 - [Meet StoreKit for SwiftUI in iOS 17 (non-consumable in-app purchases)](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/meet-storekit-for-swiftui)
+- [Meet StoreKit SubscriptionStoreView in iOS 17 (Auto-Renewable Subscription)](https://github.com/HuangRunHua/wwdc23-code-notes/tree/main/meet-subscriptionstoreview-in-iOS17)
