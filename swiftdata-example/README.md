@@ -112,6 +112,20 @@ struct swiftdata_exampleApp: App {
 }
 ```
 
+SwiftUI also allows for a granular setup on a view level. Different views in the same window can have separate containers, and saving in one container won’t affect another.
+
+```swift
+struct AnotherView: View {
+    var body: some View {
+        ScrollView {
+          	Form {...}
+          	LibraryView()
+           			.modelContainer(for: Library.self)
+        }
+    }
+}
+```
+
 
 
 ## Save models for later use
