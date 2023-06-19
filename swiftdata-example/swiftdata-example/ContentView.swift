@@ -8,7 +8,12 @@
 import SwiftUI
 import SwiftData
 
+//let notePredictate = #Predicate<Note> { note in
+//        note.title.count > 5
+//}
+
 struct ContentView: View {
+//    @Query(filter: notePredictate, sort: \.createDate, order: .reverse) private var notes: [Note]
     @Query(sort: \.createDate, order: .reverse) private var notes: [Note]
     @State private var showNewNoteView: Bool = false
     @State private var note: Note = Note(title: "ETIAM SIT AMETEST DONEC",

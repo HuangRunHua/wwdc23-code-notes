@@ -52,3 +52,183 @@ Annotate properties with the `Transient` macro and SwiftData won’t write their
 @Transient var wordsCount: Int
 ```
 
+## Configure the model storage
+
+Before SwiftData can examine your models and generate the required schema, you need to tell it — at runtime — which models to persist, and optionally, the configuration to use for the underlying storage.
+
+To set up the default storage, use the `modelContainer(for:inMemory:isAutosaveEnabled:isUndoEnabled:onSetup:)` view modifier (or the scene equivalent) and specify the array of model types to persist. If you use the view modifier, add it at the very top of the view hierarchy so all nested views inherit the properly configured environment:
+
+```swift
+import SwiftData
+@main
+struct swiftdata_exampleApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(for: Note.self)
+    }
+}
+```
+
+If there are more than one models, use list instead:
+
+```swift
+import SwiftData
+@main
+struct swiftdata_exampleApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(
+          for: [Note.self, Tag.self]
+        )
+    }
+}
+```
+
+**To use SwiftData, any application has to set up at least one ModelContainer.** It creates the whole storage stack, including the context that `@Query` will use. A View has a single model container, but an application can create and use as many containers as it needs for different view hierarchies. If the application does not set up its modelContainer, its windows and the views it creates can not save or query models via SwiftData. 
+
+If your app only has a single model container, the window and its views will inherit the container, as well as any other windows created from the same group. All of these views will write and read from a single container. 
+
+Some apps need a few storage stacks, and they can set up several model containers for different windows.
+
+```swift
+import SwiftData
+@main
+struct swiftdata_exampleApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(for: [Note.self, Tag.self])
+      
+      	WindowGroup("Note Deisgner") {
+            NoteDeisgnerView()
+        }
+        .modelContainer(for: Designer.self)
+    }
+}
+```
+
+
+
+## Save models for later use
+
+To manage instances of your model classes at runtime, use a *model context* — the object responsible for the in-memory model data and coordination with the model container to successfully persist that data. To get a context for your model container that’s bound to the main actor, use the `modelContext` environment variable:
+
+```swift
+import SwiftData
+struct NoteEditView: View {
+    @Environment(\.modelContext) private var modelContext
+  	...
+}
+```
+
+### Add New Data
+
+To enable SwiftData to persist a model instance and begin tracking changes to it, insert the instance into the context:
+
+```swift
+var note: Note = Note(title: title,
+                      subtitle: subtitle,
+                      content: content)
+context.insert(note)
+```
+
+> Note that the default behavior of context will be auto-save. If you don't want context to auto-save your data, use `.modelContainer(isAutosaveEnabled:false)` .
+
+Following the insert, you can save immediately by invoking the context’s `save()`method, or rely on the context’s implicit save behavior instead. Contexts automatically track changes to their known model instances and include those changes in subsequent saves. In addition to saving, you can use a context to fetch, enumerate, and delete model instances. 
+
+### Delete Data
+
+```swift
+context.delete(note)
+```
+
+### Manually Save Changes
+
+```swift
+try context.save()
+```
+
+### Update Data Automatically
+
+Pass your data with the  `@Bindable` macro, when something change the data in the database will change as well:
+
+```swift
+struct NoteEditView: View {
+    @Bindable var note: Note
+}
+```
+
+## Fetch models for display or additional processing
+
+After you begin persisting model data, you’ll likely want to retrieve that data, materialized as model instances, and display those instances in a view or take some other action on them. SwiftData provides the `Query` property wrapper and the `FetchDescriptor` type for performing fetches.
+
+To fetch model instances, and optionally apply search criteria and a preferred sort order, use `@Query` in your SwiftUI view. The `@Model` macro adds `Observable` conformance to your model classes, enabling SwiftUI to refresh the containing view whenever changes occur to any of the fetched instances.
+
+### Using @Query to load and filter data
+
+```swift
+import SwiftData
+struct ContentView: View {
+    @Query(sort: \.createDate, order: .reverse) private var notes: [Note]
+  	...
+}
+```
+
+### Fetch the specific data
+
+Use `Predicate` for searching or filtering your database.
+
+```swift
+let notePredictate = #Predicate<Note> { note in
+		note.title.count > 5
+}
+
+@Query(filter: notePredictate, sort: \.createDate, order: .reverse) private var notes: [Note]
+```
+
+## Preview in SwiftUI
+
+### Create preview container
+
+```swift
+import SwiftData
+@MainActor
+let previewContainer: ModelContainer = {
+    do {
+        let container = try ModelContainer(
+            for: Note.self, ModelConfiguration(inMemory: true)
+        )
+        for note in SampleNotes.contents {
+            container.mainContext.insert(object: note)
+        }
+        return container
+    } catch {
+        fatalError("Failed to create container")
+    }
+}()
+
+struct SampleNotes {
+    static var contents: [Note] = [...]
+}
+```
+
+### Enable preview in SwiftUI
+
+```swift
+#Preview {
+  	/// Xcode15.0 beta (15A5160n)
+    MainActor.assumeIsolated {
+        ContentView()
+            .modelContainer(previewContainer)
+    }
+  	/// Later may change to
+  	ContentView()
+        .modelContainer(previewContainer)
+}
+```
+
