@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NoteView: View {
     
-    @Bindable var note: Note
+    var note: Note
     @State private var showEditView: Bool = false
     
     var body: some View {
@@ -30,11 +30,14 @@ struct NoteView: View {
                     .padding(.top, -7)
                 Spacer()
             }
-            Text(note.content)
-                .foregroundStyle(Color.init(UIColor.darkGray))
-                .padding([.leading,.trailing])
-                .padding(.top, -3)
-                .lineSpacing(5)
+            HStack {
+                Text(note.content)
+                    .foregroundStyle(Color.init(UIColor.darkGray))
+                    .padding([.leading,.trailing])
+                    .padding(.top, -3)
+                    .lineSpacing(5)
+                Spacer()
+            }
         }
         .fontDesign(.rounded)
         .navigationBarTitleDisplayMode(.inline)
@@ -48,7 +51,11 @@ struct NoteView: View {
             }
         }
         .sheet(isPresented: $showEditView, content: {
-            NoteEditView(edit: true, note: note)
+            NoteEditView(edit: true,
+                         note: note,
+                         title: note.title,
+                         subtitle: note.subtitle,
+                         content: note.content)
         })
     }
 }

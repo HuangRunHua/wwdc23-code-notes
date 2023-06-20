@@ -16,10 +16,14 @@ import SwiftData
 struct NoteEditView: View {
     
     let edit: Bool
-    @Bindable var note: Note
+    var note: Note
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
+    
+    @State var title: String = ""
+    @State var subtitle: String = ""
+    @State var content: String = ""
 
     var body: some View {
         NavigationView {
@@ -27,19 +31,19 @@ struct NoteEditView: View {
                 VStack {
                     HStack(alignment: .top) {
                         MarkerView(text: "H1").frame(width: 20)
-                        TextField("Enter title...", text: $note.title, axis: .vertical)
+                        TextField("Enter title...", text: $title, axis: .vertical)
                             .font(.title)
                             .bold()
                     }
                     HStack(alignment: .top) {
                         MarkerView(text: "H2").frame(width: 20)
-                        TextField("Enter subtitle...", text: $note.subtitle, axis: .vertical)
+                        TextField("Enter subtitle...", text: $subtitle, axis: .vertical)
                             .font(.headline)
                     }
                     .padding(.top, -7)
                     HStack(alignment: .top) {
                         MarkerView(text: "B1").frame(width: 20)
-                        TextField("Enter content...", text: $note.content, axis: .vertical)
+                        TextField("Enter content...", text: $content, axis: .vertical)
                             .foregroundStyle(Color.init(UIColor.darkGray))
                             
                     }
@@ -58,13 +62,18 @@ struct NoteEditView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         if edit {
-//                            try modelContext.save()
+                            note.title = title
+                            note.subtitle = subtitle
+                            note.content = content
                         } else {
+                            note.title = title
+                            note.subtitle = subtitle
+                            note.content = content
                             modelContext.insert(object: note)
                         }
                         dismiss()
                     }
-                    .disabled(note.title=="" ? true: false)
+                    .disabled(title=="" ? true: false)
                 }
             }
         }
