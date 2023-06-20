@@ -27,3 +27,10 @@ struct NotePreviewCell: View {
         }
     }
 }
+
+#Preview {
+    MainActor.assumeIsolated {
+        NotePreviewCell(note: .preview)
+            .modelContainer(PreviewSampleData.previewContainer)
+    }
+}

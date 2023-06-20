@@ -56,6 +56,6 @@ struct ContentView: View {
 #Preview {
     MainActor.assumeIsolated {
         ContentView()
-            .modelContainer(previewContainer)
+            .modelContainer(PreviewSampleData.previewContainer)
     }
 }

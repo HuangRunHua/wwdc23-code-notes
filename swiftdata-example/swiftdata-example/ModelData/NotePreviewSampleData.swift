@@ -7,20 +7,23 @@
 
 import SwiftData
 
-@MainActor
-let previewContainer: ModelContainer = {
-    do {
-        let container = try ModelContainer(
-            for: Note.self, ModelConfiguration(inMemory: true)
-        )
-        for note in SampleNotes.contents {
-            container.mainContext.insert(object: note)
+
+actor PreviewSampleData {
+    @MainActor
+    static var previewContainer: ModelContainer = {
+        do {
+            let container = try ModelContainer(
+                for: Note.self, ModelConfiguration(inMemory: true)
+            )
+            for note in SampleNotes.contents {
+                container.mainContext.insert(object: note)
+            }
+            return container
+        } catch {
+            fatalError("Failed to create container")
         }
-        return container
-    } catch {
-        fatalError("Failed to create container")
-    }
-}()
+    }()
+}
 
 struct SampleNotes {
     static var contents: [Note] = [

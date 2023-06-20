@@ -52,6 +52,123 @@ Annotate properties with the `Transient` macro and SwiftData won’t write their
 @Transient var wordsCount: Int
 ```
 
+### Specifying original property names
+
+If you change the name of some variables in your model, that would be seen as a new property in generated schema and SwiftData will create new properties for them. If you want to preserve the existing data you can map the original name to the property name using `@Attribute` and specifying the `originalName:` parameter.
+
+```swift
+@Attribute(originalName: "subtitle") var description: String
+```
+
+## Migration of Models
+
+As your app’s model layer evolves, SwiftData performs automatic migrations of the underlying model data so it remains in a consistent state. If the aggregate changes between two versions of the model layer exceed the capabilities of automatic migrations, use `Schema` and `SchemaMigrationPlan` to participate in those migrations and help them complete successfully.
+
+### Evolving schemas
+
+- Encapsulate your models at a specific version with `VersionedSchema`
+- Order your versions with `SchemaMigrationPlan`
+- Define each migration stage
+
+### Migration stages
+
+1. **Lightweight migration stage**: Lightweight migrations do not require any additional code to migrate the existing data for app release. Modifications like adding new variable to `Note` properties or specifying the delete rules on my relationships are lightweight migration eligible. 
+2. **Custom migration stage**: Operations like making the title of a `Note` unique is not eligible for a lightweight migration and require custom migration stage.
+
+#### Encapsulate original schema in a `VersionedSchema`
+
+```swift
+enum NoteSchemaV1: VersionedSchema {
+    static var versionIdentifier: String? = "noteschemav1"
+    static var models: [any PersistentModel.Type] {
+        [Note.self]
+    }
+    @Model
+    class Note {
+        var createDate: Date
+        var title: String
+        var subtitle: String
+        var content: String
+        
+        init(createDate: Date = .now, title: String, subtitle: String, content: String) {
+            self.createDate = createDate
+            self.title = title
+            self.subtitle = subtitle
+            self.content = content
+        }
+    }
+}
+```
+
+#### Add NoteSchemaV2
+
+```swift
+enum NoteSchemaV2: VersionedSchema {
+    static var versionIdentifier: String? = "noteschemav2"
+    static var models: [any PersistentModel.Type] {
+        [Note.self]
+    }
+    @Model
+    class Note {
+        var createDate: Date
+        @Attribute(.unique) var title: String
+        var subtitle: String
+        var content: String
+        
+        init(createDate: Date = .now, title: String, subtitle: String, content: String) {
+            self.createDate = createDate
+            self.title = title
+            self.subtitle = subtitle
+            self.content = content
+        }
+    }
+}
+```
+
+#### Handle migrations
+
+```swift
+enum NoteMigrationPlan: SchemaMigrationPlan {
+    static var schemas: [any VersionedSchema.Type] {
+        // Provide the ordering of schemas.
+        [NoteSchemaV1.self, NoteSchemaV2.self]
+    }
+    
+    static var stages: [MigrationStage] {
+        [migrationV1toV2]
+    }
+    
+    static let migrationV1toV2 = MigrationStage.custom(
+        fromVersion: NoteSchemaV1.self,
+        toVersion: NoteSchemaV2.self,
+        willMigrate: { context in
+            let notes = try? context.fetch(FetchDescriptor<NoteSchemaV1.Note>())
+            try? context.save()
+        }, didMigrate: nil
+    )
+}
+```
+
+#### Configure the migration plan
+
+From the WWDC video, you can configure the migration plan through the code below, but it crashed in current version of Xcode 15.0 beta (15A5160n)
+
+```swift
+@main
+struct swiftdata_exampleApp: App {
+    let container = try! ModelContainer(
+        for: Schema([Note.self]),
+        migrationPlan: NoteMigrationPlan.self
+    )
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(for: Note.self)
+    }
+}
+```
+
 ## Configure the model storage
 
 Before SwiftData can examine your models and generate the required schema, you need to tell it — at runtime — which models to persist, and optionally, the configuration to use for the underlying storage.
@@ -125,8 +242,6 @@ struct AnotherView: View {
     }
 }
 ```
-
-
 
 ## Save models for later use
 
@@ -207,6 +322,8 @@ let notePredictate = #Predicate<Note> { note in
 
 ## Preview in SwiftUI
 
+If you want to preview some sample data in Xcode using SwiftUI, you may need to create a preview container.
+
 ### Create preview container
 
 ```swift
@@ -231,7 +348,63 @@ struct SampleNotes {
 }
 ```
 
+You can also declare the container in the following way:
+
+```swift
+actor PreviewSampleData {
+    @MainActor
+    static var previewContainer: ModelContainer = {
+        do {
+            let container = try ModelContainer(
+                for: Note.self, ModelConfiguration(inMemory: true)
+            )
+            for note in SampleNotes.contents {
+                container.mainContext.insert(object: note)
+            }
+            return container
+        } catch {
+            fatalError("Failed to create container")
+        }
+    }()
+}
+```
+
+If there are more than one models in your app, you can migrate two containers in one:
+
+```swift
+actor PreviewSampleData {
+    @MainActor
+    static var container: ModelContainer = {
+        let schema = Schema([Note.self, Tag.self])
+        let configuration = ModelConfiguration(inMemory: true)
+        let container = try! ModelContainer(for: schema, configurations: [configuration])
+        let sampleData: [any PersistentModel] = [
+            Note.preview, Tag.preview
+        ]
+        sampleData.forEach {
+            container.mainContext.insert($0)
+        }
+        return container
+    }()
+}
+
+/// Declare the preview data inside the models
+extension Note {
+  	static var preview: Note {
+        Note(...)
+    }
+}
+
+extension Tag {
+  	static var preview: Tag {
+        Tag(...)
+    }
+}
+```
+
 ### Enable preview in SwiftUI
+
+#### Display all the notes 
 
 ```swift
 #Preview {
@@ -243,6 +416,24 @@ struct SampleNotes {
   	/// Later may change to
   	ContentView()
         .modelContainer(previewContainer)
+}
+```
+
+#### Display single note
+
+```swift
+struct NotePreviewCell: View {
+    var note: Note
+  	...
+}
+
+#Preview {
+  	/// This is the method provided by Apple's example code
+  	/// but still not working in Xcode15.0 beta (15A5160n)
+    MainActor.assumeIsolated {
+        NotePreviewCell(note: .preview)
+            .modelContainer(PreviewSampleData.previewContainer)
+    }
 }
 ```
 
