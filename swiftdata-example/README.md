@@ -1,8 +1,8 @@
- 
-
 # First Glance at SwiftData
 
 SwiftData enables you to add persistence to your app quickly, with minimal code and no external dependencies. Using modern language features like macros, SwiftData enables you to write code that is fast, efficient, and safe, enabling you to describe the entire model layer (or object graph) for your app. The framework handles storing the underlying model data, and optionally, syncing that data across multiple devices.
+
+![](https://github.com/HuangRunHua/wwdc23-code-notes/raw/main/swiftdata-example/cover.jpg)
 
 ## Turn classes into models to make them persistable
 
