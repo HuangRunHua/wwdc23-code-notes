@@ -9,13 +9,13 @@ import SwiftUI
 import VisionKit
 
 struct ContentView: View {
-    @State private var deviceSupportLiveText = false
+    @State private var deviceSupportLiftSubject = false
     @State private var showDeviceNotCapacityAlert = false
-    @State private var showLiveTextView = false
+    @State private var showImageLiftView = false
     var body: some View {
         Button {
-            if deviceSupportLiveText {
-                self.showLiveTextView = true
+            if deviceSupportLiftSubject {
+                self.showImageLiftView = true
             } else {
                 self.showDeviceNotCapacityAlert = true
             }
@@ -27,12 +27,12 @@ struct ContentView: View {
                 .background(Color.blue)
                 .cornerRadius(10)
         }
-        .alert("Live Text Unavailable", isPresented: $showDeviceNotCapacityAlert, actions: {})
-        .sheet(isPresented: $showLiveTextView, content: {
+        .alert("Lift Subject Unavailable", isPresented: $showDeviceNotCapacityAlert, actions: {})
+        .sheet(isPresented: $showImageLiftView, content: {
             ImageLiftView()
         })
         .onAppear {
-            self.deviceSupportLiveText = ImageAnalyzer.isSupported
+            self.deviceSupportLiftSubject = ImageAnalyzer.isSupported
         }
     }
 }
