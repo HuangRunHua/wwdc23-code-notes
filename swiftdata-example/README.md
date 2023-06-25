@@ -435,5 +435,14 @@ struct NotePreviewCell: View {
             .modelContainer(PreviewSampleData.previewContainer)
     }
 }
+
+/// This way works.
+#Preview {
+	MainActor.assumeIsolated {
+            let container = PreviewSampleLedgerData.ledgerPreviewContainer
+            return NotePreviewCell(note: .preview)
+                        .modelContainer(container)
+        }
+}
 ```
 
