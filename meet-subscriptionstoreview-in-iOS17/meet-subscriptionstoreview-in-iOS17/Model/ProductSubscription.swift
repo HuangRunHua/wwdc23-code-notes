@@ -5,10 +5,15 @@
 //  Created by Huang Runhua on 6/15/23.
 //
 
+import OSLog
 import Foundation
 import StoreKit
 
 actor ProductSubscription {
+    private let logger = Logger(
+        subsystem: "Meet SubscriptionView",
+        category: "Product Subscription"
+    )
         
     private init() {}
     
@@ -67,7 +72,32 @@ actor ProductSubscription {
 //  Create a Task to iterate Transaction.updates at launch.
 extension ProductSubscription {
     // For other in-app purchase use this method to check for status.
-    func process(transaction verificationResult: VerificationResult<Transaction>) async {}
+    func process(transaction verificationResult: VerificationResult<Transaction>) async {
+        do {
+            let unsafeTransaction = verificationResult.unsafePayloadValue
+            logger.log("""
+            Processing transaction ID \(unsafeTransaction.id) for \
+            \(unsafeTransaction.productID)
+            """)
+        }
+        
+        let transaction: Transaction
+        switch verificationResult {
+        case .verified(let t):
+            logger.debug("""
+            Transaction ID \(t.id) for \(t.productID) is verified
+            """)
+            transaction = t
+        case .unverified(let t, let error):
+            // Log failure and ignore unverified transactions
+            logger.error("""
+            Transaction ID \(t.id) for \(t.productID) is unverified: \(error)
+            """)
+            return
+        }
+        
+        await transaction.finish()
+    }
     
     func checkForUnfinishedTransactions() async {
         for await transaction in Transaction.unfinished {
